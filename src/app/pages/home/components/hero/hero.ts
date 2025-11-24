@@ -17,7 +17,7 @@ export class HeroComponent implements OnInit {
     // Generate random particles for background animation
     this.generateParticles();
   }
-// ..
+
   generateParticles() {
     const particleCount = 30;
     for (let i = 0; i < particleCount; i++) {
