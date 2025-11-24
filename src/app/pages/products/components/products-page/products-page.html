@@ -1,0 +1,267 @@
+<div class="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white py-24 overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0"
+                style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 1px); background-size: 40px 40px;">
+            </div>
+        </div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div
+                    class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
+                    <lucide-icon name="package" [size]="18" class="text-white"></lucide-icon>
+                    <span class="text-sm font-semibold">Our Products</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">Healthcare Solutions</h1>
+                <p class="text-xl md:text-2xl text-blue-100">Discover our comprehensive range of high-quality
+                    pharmaceutical products designed to improve your well-being.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Bar -->
+    <section class="py-8 bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto">
+                <div class="relative">
+                    <lucide-icon name="search" [size]="20"
+                        class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></lucide-icon>
+                    <input type="text" [(ngModel)]="searchQuery"
+                        placeholder="Search products by name, category, or description..."
+                        class="w-full px-6 py-4 pl-12 pr-32 border-2 border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-900 focus:border-transparent transition-all duration-200 text-lg" />
+                    @if (searchQuery || selectedCategory !== 'all') {
+                    <button (click)="clearFilters()"
+                        class="absolute right-4 top-1/2 transform -translate-y-1/2 flex items-center gap-1 text-sm text-blue-900 hover:text-blue-950 font-semibold transition-colors">
+                        <lucide-icon name="circle-x" [size]="16"></lucide-icon>
+                        Clear Filters
+                    </button>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex items-center justify-center gap-2 mb-8">
+                    <lucide-icon name="grid-3x3" [size]="20" class="text-blue-900"></lucide-icon>
+                    <h2 class="text-2xl font-bold text-gray-900">Browse by Category</h2>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+                    @for (cat of categories; track cat.id) {
+                    <button (click)="selectCategory(cat.id)" [class.bg-gradient-to-br]="selectedCategory === cat.id"
+                        [class.from-blue-900]="selectedCategory === cat.id"
+                        [class.to-blue-800]="selectedCategory === cat.id"
+                        [class.text-white]="selectedCategory === cat.id" [class.shadow-lg]="selectedCategory === cat.id"
+                        [class.bg-white]="selectedCategory !== cat.id"
+                        [class.text-gray-700]="selectedCategory !== cat.id"
+                        [class.hover:bg-blue-50]="selectedCategory !== cat.id"
+                        class="p-4 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2"
+                        [class.border-blue-900]="selectedCategory === cat.id"
+                        [class.border-blue-100]="selectedCategory !== cat.id">
+                        <div class="flex flex-col items-center space-y-2">
+                            <lucide-icon [name]="cat.iconName" [size]="28"></lucide-icon>
+                            <span class="text-sm font-semibold text-center leading-tight">{{ cat.name }}</span>
+                        </div>
+                    </button>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <!-- Results count -->
+                <div class="mb-8 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <lucide-icon name="package-search" [size]="20" class="text-blue-900"></lucide-icon>
+                        <p class="text-gray-600 text-lg">
+                            Showing <span class="font-bold text-blue-900">{{ filteredProducts.length }}</span>
+                            product(s)
+                        </p>
+                    </div>
+                    @if (selectedCategory !== 'all') {
+                    <div class="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-lg">
+                        <span class="text-sm text-gray-600">Category:</span>
+                        <span class="font-semibold text-blue-900">{{ getCategoryName(selectedCategory) }}</span>
+                    </div>
+                    }
+                </div>
+
+                <!-- Products -->
+                @if (filteredProducts.length > 0) {
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    @for (product of filteredProducts; track product.id) {
+                    <div
+                        class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group border-2 border-blue-100 hover:border-blue-300">
+                        <!-- Product Image -->
+                        <div class="relative h-64 bg-gradient-to-br from-blue-900 to-blue-800 overflow-hidden">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div
+                                    class="w-32 h-32 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center">
+                                    <span class="text-white text-6xl font-bold opacity-80">{{ product.name.charAt(0)
+                                        }}</span>
+                                </div>
+                            </div>
+                            @if (!product.inStock) {
+                            <div
+                                class="absolute top-4 right-4 flex items-center gap-1 bg-red-500 text-white px-3 py-1.5 rounded-full text-sm font-semibold shadow-lg">
+                                <lucide-icon name="circle-x" [size]="14"></lucide-icon>
+                                Out of Stock
+                            </div>
+                            } @else {
+                            <div
+                                class="absolute top-4 right-4 flex items-center gap-1 bg-green-500 text-white px-3 py-1.5 rounded-full text-sm font-semibold shadow-lg">
+                                <lucide-icon name="circle-check" [size]="14"></lucide-icon>
+                                In Stock
+                            </div>
+                            }
+                        </div>
+
+                        <!-- Product Info -->
+                        <div class="p-6">
+                            <div class="mb-4">
+                                <h3
+                                    class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-900 transition-colors">
+                                    {{ product.name }}
+                                </h3>
+                                <p class="text-gray-600 text-sm line-clamp-2">{{ product.description }}</p>
+                            </div>
+
+                            <!-- Features -->
+                            <div class="mb-4 space-y-2">
+                                @for (feature of product.features; track feature) {
+                                <div class="flex items-center text-sm text-gray-700">
+                                    <lucide-icon name="check" [size]="16"
+                                        class="text-green-500 mr-2 flex-shrink-0"></lucide-icon>
+                                    <span>{{ feature }}</span>
+                                </div>
+                                }
+                            </div>
+
+                            <!-- Price and Button -->
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                                <div>
+                                    <p class="text-xs text-gray-500 mb-1">Price</p>
+                                    <p class="text-2xl font-bold text-blue-900">{{ product.price }}</p>
+                                </div>
+                                <button [disabled]="!product.inStock"
+                                    class="group/btn flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-900 to-blue-800 text-white rounded-xl font-semibold hover:from-blue-800 hover:to-blue-700 transform hover:scale-105 transition-all duration-200 shadow-md disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:from-gray-400 disabled:to-gray-500">
+                                    @if (product.inStock) {
+                                    <span>View Details</span>
+                                    <lucide-icon name="arrow-right" [size]="16"
+                                        class="group-hover/btn:translate-x-1 transition-transform"></lucide-icon>
+                                    } @else {
+                                    <lucide-icon name="ban" [size]="16"></lucide-icon>
+                                    <span>Unavailable</span>
+                                    }
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+                } @else {
+                <!-- No Results -->
+                <div class="text-center py-20">
+                    <div class="w-32 h-32 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <lucide-icon name="search-x" [size]="64" class="text-blue-300"></lucide-icon>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-900 mb-2">No Products Found</h3>
+                    <p class="text-gray-600 mb-8 text-lg">We couldn't find any products matching your criteria.</p>
+                    <button (click)="clearFilters()"
+                        class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-900 to-blue-800 text-white rounded-xl font-semibold hover:from-blue-800 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl">
+                        <lucide-icon name="rotate-ccw" [size]="20"></lucide-icon>
+                        Clear Filters
+                    </button>
+                </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center gap-2 bg-blue-900/5 rounded-full px-4 py-2 mb-4">
+                        <lucide-icon name="star" [size]="18" class="text-blue-900"></lucide-icon>
+                        <span class="text-sm font-semibold text-blue-900">Why Choose Us</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Why Choose MediPrime Products?</h2>
+                    <p class="text-xl text-gray-600">Quality and excellence in every product we deliver</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="group text-center">
+                        <div
+                            class="w-20 h-20 bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <lucide-icon name="shield-check" [size]="32" class="text-white"></lucide-icon>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Quality Assured</h3>
+                        <p class="text-gray-600">All products meet international quality standards</p>
+                    </div>
+
+                    <div class="group text-center">
+                        <div
+                            class="w-20 h-20 bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <lucide-icon name="indian-rupee" [size]="32" class="text-white"></lucide-icon>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Affordable Prices</h3>
+                        <p class="text-gray-600">Best value for your healthcare needs</p>
+                    </div>
+
+                    <div class="group text-center">
+                        <div
+                            class="w-20 h-20 bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <lucide-icon name="truck" [size]="32" class="text-white"></lucide-icon>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Fast Delivery</h3>
+                        <p class="text-gray-600">Quick and reliable shipping worldwide</p>
+                    </div>
+
+                    <div class="group text-center">
+                        <div
+                            class="w-20 h-20 bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <lucide-icon name="headset" [size]="32" class="text-white"></lucide-icon>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Expert Support</h3>
+                        <p class="text-gray-600">Professional guidance and assistance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0"
+                style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 1px); background-size: 40px 40px;">
+            </div>
+        </div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <lucide-icon name="circle-question-mark" [size]="48" class="text-white mx-auto mb-6"></lucide-icon>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Need Help Choosing?</h2>
+                <p class="text-xl text-blue-100 mb-8">
+                    Our healthcare experts are here to help you find the perfect solution for your needs.
+                </p>
+                <button routerLink="/contact"
+                    class="group inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 rounded-xl font-semibold hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-xl">
+                    <lucide-icon name="phone" [size]="20"></lucide-icon>
+                    <span>Contact Our Experts</span>
+                    <lucide-icon name="arrow-right" [size]="20"
+                        class="group-hover:translate-x-1 transition-transform"></lucide-icon>
+                </button>
+            </div>
+        </div>
+    </section>
+</div>

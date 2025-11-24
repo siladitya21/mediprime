@@ -1,0 +1,81 @@
+/* ============================================
+   PHARMACEUTICAL PROJECT - FONT STYLES
+   ============================================ */
+
+/* ---------- HEADINGS (Raleway Bold) ---------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Poiret One', sans-serif;
+    font-weight: 700;
+}
+
+/* ---------- BODY TEXT (Inter Regular) ---------- */
+body,
+p,
+div,
+span,
+label,
+input,
+textarea,
+select,
+button {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+/* ---------- EMPHASIS (Lato Light Italic) ---------- */
+em,
+i,
+cite,
+blockquote {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
+/* ---------- STRONG/BOLD ---------- */
+strong,
+b {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+}
+
+/* ---------- SMALL TEXT ---------- */
+small,
+sub,
+sup {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+/* ---------- LISTS ---------- */
+ul,
+ol,
+li {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+/* ---------- TABLES ---------- */
+table,
+th,
+td {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+/* ---------- CODE/PRE ---------- */
+code,
+pre {
+    font-family: 'Courier New', monospace;
+}
+
+/* ---------- LINKS ---------- */
+a {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}

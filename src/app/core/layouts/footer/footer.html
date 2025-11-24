@@ -1,0 +1,218 @@
+<footer class="bg-gradient-to-br from-blue-950 via-blue-900 to-blue-950 text-white relative overflow-hidden">
+
+  <!-- Decorative blurred background circles -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+
+    <!-- Footer main grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+
+      <!-- =============================
+           Company Info Section
+      ============================== -->
+      <div class="space-y-6">
+
+        <!-- Logo + Company Name -->
+        <div class="flex items-center space-x-3">
+          <div class="relative">
+            <div class="absolute inset-0 bg-white/20 rounded-xl blur-md"></div>
+            <div class="bg-white p-2.5 rounded-xl shadow-2xl relative z-10">
+              <lucide-icon name="flask-conical" [size]="32" class="text-blue-900"></lucide-icon>
+            </div>
+          </div>
+          <span class="text-2xl font-bold">MediPrime Biotech</span>
+        </div>
+
+        <!-- About text -->
+        <p class="text-blue-100 text-sm leading-relaxed">
+          Innovating Medicine, Enhancing Lives. Advancing healthcare through high-quality, effective pharmaceutical solutions.
+        </p>
+
+        <!-- Social Media Icons -->
+        <div>
+          <p class="text-blue-300 text-xs font-semibold uppercase tracking-wider mb-3">Follow Us</p>
+          <div class="flex gap-3">
+
+            <!-- Facebook -->
+            <a href="#" 
+               class="group relative w-10 h-10 bg-white/10 hover:bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-white/10 hover:border-white/30">
+              <lucide-icon name="facebook" [size]="18" class="text-white group-hover:text-blue-900 transition-colors"></lucide-icon>
+            </a>
+
+            <!-- Twitter -->
+            <a href="#" 
+               class="group relative w-10 h-10 bg-white/10 hover:bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-white/10 hover:border-white/30">
+              <lucide-icon name="twitter" [size]="18" class="text-white group-hover:text-blue-900 transition-colors"></lucide-icon>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="#" 
+               class="group relative w-10 h-10 bg-white/10 hover:bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-white/10 hover:border-white/30">
+              <lucide-icon name="linkedin" [size]="18" class="text-white group-hover:text-blue-900 transition-colors"></lucide-icon>
+            </a>
+
+            <!-- Instagram -->
+            <a href="#" 
+               class="group relative w-10 h-10 bg-white/10 hover:bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-white/10 hover:border-white/30">
+              <lucide-icon name="instagram" [size]="18" class="text-white group-hover:text-blue-900 transition-colors"></lucide-icon>
+            </a>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- =============================
+           Quick Links Section
+      ============================== -->
+      <div>
+        <h3 class="text-lg font-bold mb-6 text-white flex items-center gap-2">
+          <lucide-icon name="link" [size]="20" class="text-blue-300"></lucide-icon>
+          Quick Links
+        </h3>
+
+        <ul class="space-y-3">
+          <li>
+            <a routerLink="/about" class="text-blue-100 hover:text-white transition-all duration-200 flex items-center group hover:translate-x-1">
+              <lucide-icon name="chevron-right" [size]="16" class="text-blue-400 group-hover:text-white transition-colors mr-2"></lucide-icon>
+              About Us
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/products" class="text-blue-100 hover:text-white transition-all duration-200 flex items-center group hover:translate-x-1">
+              <lucide-icon name="chevron-right" [size]="16" class="text-blue-400 group-hover:text-white transition-colors mr-2"></lucide-icon>
+              Our Products
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/contact" class="text-blue-100 hover:text-white transition-all duration-200 flex items-center group hover:translate-x-1">
+              <lucide-icon name="chevron-right" [size]="16" class="text-blue-400 group-hover:text-white transition-colors mr-2"></lucide-icon>
+              Contact Us
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- =============================
+           Resources Links Section
+      ============================== -->
+      <div>
+        <h3 class="text-lg font-bold mb-6 text-white flex items-center gap-2">
+          <lucide-icon name="book-open" [size]="20" class="text-blue-300"></lucide-icon>
+          Resources
+        </h3>
+
+        <ul class="space-y-3">
+          <li>
+            <a routerLink="/patient-resources" class="text-blue-100 hover:text-white flex items-center group hover:translate-x-1">
+              <lucide-icon name="chevron-right" [size]="16" class="text-blue-400 mr-2 group-hover:text-white"></lucide-icon>
+              Patient Resources
+            </a>
+          </li>
+          <li>
+            <a routerLink="/healthcare-professionals" class="text-blue-100 hover:text-white flex items-center group hover:translate-x-1">
+              <lucide-icon name="chevron-right" [size]="16" class="text-blue-400 mr-2 group-hover:text-white"></lucide-icon>
+              Healthcare Professionals
+            </a>
+          </li>
+          <li>
+            <a routerLink="/clinical-trials" class="text-blue-100 hover:text-white flex items-center group hover:translate-x-1">
+              <lucide-icon name="chevron-right" [size]="16" class="text-blue-400 mr-2 group-hover:text-white"></lucide-icon>
+              Clinical Trials
+            </a>
+          </li>
+          <li>
+            <a routerLink="/safety-information" class="text-blue-100 hover:text-white flex items-center group hover:translate-x-1">
+              <lucide-icon name="chevron-right" [size]="16" class="text-blue-400 mr-2 group-hover:text-white"></lucide-icon>
+              Safety Information
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- =============================
+           Contact Information Section
+      ============================== -->
+      <div>
+        <h3 class="text-lg font-bold mb-6 text-white flex items-center gap-2">
+          <lucide-icon name="mail" [size]="20" class="text-blue-300"></lucide-icon>
+          Contact Us
+        </h3>
+
+        <ul class="space-y-4">
+
+          <!-- Address -->
+          <li class="flex items-start space-x-3 text-blue-100 group">
+            <lucide-icon name="map-pin" [size]="18" class="mt-0.5 text-blue-300 group-hover:text-white"></lucide-icon>
+            <span class="text-sm">43 MN Banerjee Bylane, Kolkata-700114, India</span>
+          </li>
+
+          <!-- Email -->
+          <li class="flex items-center space-x-3 text-blue-100 group hover:text-white">
+            <lucide-icon name="mail" [size]="18" class="text-blue-300 group-hover:text-white"></lucide-icon>
+            <a href="mailto:mediprimebiotech@gmail.com" class="text-sm">mediprimebiotech@gmail.com</a>
+          </li>
+
+          <!-- Phone 1 -->
+          <li class="flex items-center space-x-3 text-blue-100 group hover:text-white">
+            <lucide-icon name="phone" [size]="18" class="text-blue-300 group-hover:text-white"></lucide-icon>
+            <a href="tel:+919331818536" class="text-sm">+91-93318-18536</a>
+          </li>
+
+          <!-- Phone 2 -->
+          <li class="flex items-center space-x-3 text-blue-100 group hover:text-white">
+            <lucide-icon name="phone" [size]="18" class="text-blue-300 group-hover:text-white"></lucide-icon>
+            <a href="tel:+919748218234" class="text-sm">+91-97482-18234</a>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- =============================
+         Bottom Bar / Copyright
+    ============================== -->
+    <div class="border-t border-blue-800/50 pt-8">
+      <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+
+        <!-- Copyright -->
+        <p class="text-blue-200 text-sm flex items-center gap-2">
+          <lucide-icon name="copyright" [size]="16"></lucide-icon>
+          {{ currentYear }} MediPrime Biotech. All rights reserved.
+        </p>
+
+        <!-- Footer bottom links -->
+        <div class="flex flex-wrap justify-center gap-6 text-sm">
+
+          <a routerLink="/privacy-policy" class="text-blue-200 hover:text-white flex items-center gap-1 group">
+            <lucide-icon name="shield-check" [size]="14"></lucide-icon>
+            Privacy Policy
+          </a>
+
+          <a routerLink="/terms-of-service" class="text-blue-200 hover:text-white flex items-center gap-1 group">
+            <lucide-icon name="file-text" [size]="14"></lucide-icon>
+            Terms of Service
+          </a>
+
+          <a routerLink="/accessibility" class="text-blue-200 hover:text-white flex items-center gap-1 group">
+            <lucide-icon name="accessibility" [size]="14"></lucide-icon>
+            Accessibility
+          </a>
+
+          <a routerLink="/sitemap" class="text-blue-200 hover:text-white flex items-center gap-1 group">
+            <lucide-icon name="map" [size]="14"></lucide-icon>
+            Sitemap
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</footer>

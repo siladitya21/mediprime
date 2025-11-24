@@ -1,0 +1,15 @@
+/* Smooth Transitions */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover Effect */
+.flex.items-center:hover {
+  transform: translateX(4px);
+  transition: all 0.3s ease;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}

@@ -1,0 +1,217 @@
+/* Product Card Fade-In Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-card {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Stagger animation delays are handled via inline styles in HTML */
+
+/* Card Hover Effects */
+.product-card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover {
+  transform: translateY(-12px) scale(1.02);
+}
+
+/* Image Zoom Effect */
+.product-card img {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover img {
+  transform: scale(1.15);
+}
+
+/* Gradient Accent Line Animation */
+.product-card > div:last-child {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Filter Pills Animation */
+@keyframes pill-pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+button:active {
+  animation: pill-pop 0.3s ease;
+}
+
+/* Status Badge Pulse */
+@keyframes pulse-badge {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.bg-green-100 {
+  animation: pulse-badge 2s ease-in-out infinite;
+}
+
+/* Card Shadow Glow on Hover */
+.product-card:hover {
+  box-shadow: 0 25px 50px -12px rgba(124, 58, 237, 0.25);
+}
+
+/* Button Hover Glow */
+.product-card button:hover {
+  box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.5);
+}
+
+/* Smooth Transitions */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Category Badge Animation */
+.product-card .absolute.top-4.left-4 span {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover .absolute.top-4.left-4 span {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(124, 58, 237, 0.3);
+}
+
+/* Filter Pills Hover Effect */
+button.rounded-full {
+  position: relative;
+  overflow: hidden;
+}
+
+button.rounded-full::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+button.rounded-full:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Empty State Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.text-center svg {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* CTA Section Gradient Animation */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.bg-gradient-to-br {
+  background-size: 200% 200%;
+  animation: gradient-shift 5s ease infinite;
+}
+
+/* Statistics Counter Animation */
+@keyframes count-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bg-violet-50 {
+  animation: count-up 0.8s ease-out;
+}
+
+/* Responsive hover effects - disable on touch devices */
+@media (hover: none) {
+  .product-card:hover {
+    transform: none;
+  }
+  
+  .product-card:hover img {
+    transform: none;
+  }
+}
+
+/* Loading State Shimmer Effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading-shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(
+    to right,
+    #f0f0f0 0%,
+    #e0e0e0 50%,
+    #f0f0f0 100%
+  );
+  background-size: 1000px 100%;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus states for accessibility */
+button:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .product-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
