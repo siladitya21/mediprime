@@ -7,12 +7,14 @@ import { LucideAngularModule } from 'lucide-angular';
 interface Product {
   id: number;
   name: string;
+  composition: string;
   category: string;
   description: string;
-  image: string;
-  price: string;
+  formulation: string;
+  packaging: string;
   features: string[];
   inStock: boolean;
+  icon: string;
 }
 
 @Component({
@@ -28,134 +30,144 @@ export class ProductsPage {
 
   categories = [
     { id: 'all', name: 'All Products', iconName: 'package' },
-    { id: 'cardiovascular', name: 'Cardiovascular', iconName: 'heart' },
-    { id: 'diabetes', name: 'Diabetes Care', iconName: 'activity' },
-    { id: 'antibiotics', name: 'Antibiotics', iconName: 'shield' },
-    { id: 'vitamins', name: 'Vitamins', iconName: 'pill' },
-    { id: 'pain-relief', name: 'Pain Relief', iconName: 'bandage' },
-    { id: 'respiratory', name: 'Respiratory', iconName: 'wind' }
+    { id: 'probiotics', name: 'Probiotics', iconName: 'leaf' },
+    { id: 'antibiotics', name: 'Antibiotics', iconName: 'shield-plus' },
+    { id: 'vitamins', name: 'Vitamins & Minerals', iconName: 'pill' },
+    { id: 'appetite', name: 'Appetite Stimulant', iconName: 'utensils' }
   ];
 
   products: Product[] = [
     {
       id: 1,
-      name: 'CardioGuard Plus',
-      category: 'cardiovascular',
-      description: 'Advanced cardiovascular support formula for maintaining healthy heart function and blood pressure.',
-      image: 'assets/images/products/cardio.jpg',
-      price: '₹499',
-      features: ['Supports Heart Health', 'Regulates Blood Pressure', 'Improves Circulation'],
-      inStock: true
+      name: 'Medfly 9G',
+      composition: 'Multivitamin + Mineral Softgel Capsules',
+      category: 'vitamins',
+      description: 'A comprehensive nutritional supplement formulated to support immunity, energy metabolism, and overall wellness. Contains essential vitamins and minerals for daily health maintenance.',
+      formulation: 'Softgel Capsule',
+      packaging: 'Strip Pack',
+      features: [
+        'Supports immune system function',
+        'Enhances energy metabolism',
+        'Promotes overall wellness',
+        'Complete multivitamin formula',
+        'Easy-to-swallow softgel capsules'
+      ],
+      inStock: true,
+      icon: 'tablets'
     },
     {
       id: 2,
-      name: 'GlucoBalance Pro',
-      category: 'diabetes',
-      description: 'Comprehensive diabetes management solution for optimal blood sugar control.',
-      image: 'assets/images/products/glucose.jpg',
-      price: '₹599',
-      features: ['Blood Sugar Control', 'Insulin Support', 'Natural Ingredients'],
-      inStock: true
+      name: 'Primolac Sachet',
+      composition: 'Pre-Probiotic Blend',
+      category: 'probiotics',
+      description: 'A scientifically balanced synbiotic formula supporting gut health, oral microbiome balance, digestive comfort, and recovery in various gastro-oral conditions. Clinically validated through academic collaborations.',
+      formulation: 'Sachet',
+      packaging: 'Box of Sachets',
+      features: [
+        'Supports gut health and microbiome balance',
+        'Oral health maintenance',
+        'Aids digestive comfort',
+        'Clinically validated formulation',
+        'Easy-to-use sachet format',
+        'Synbiotic (prebiotic + probiotic) formula'
+      ],
+      inStock: true,
+      icon: 'leaf'
     },
     {
       id: 3,
-      name: 'BioShield Antibiotics',
-      category: 'antibiotics',
-      description: 'Broad-spectrum antibiotic for effective bacterial infection treatment.',
-      image: 'assets/images/products/antibiotic.jpg',
-      price: '₹299',
-      features: ['Fast Acting', 'Broad Spectrum', 'Minimal Side Effects'],
-      inStock: true
+      name: 'Primolac Capsules',
+      composition: 'Pre-Probiotic Capsule',
+      category: 'probiotics',
+      description: 'Capsule-based probiotic formulation for long-term gut support, improved digestion, and microbiome restoration. Ideal for daily use in maintaining digestive health.',
+      formulation: 'Capsule',
+      packaging: 'Blister Pack',
+      features: [
+        'Long-term gut health support',
+        'Improves digestion',
+        'Microbiome restoration',
+        'Daily maintenance formula',
+        'Convenient capsule form',
+        'Clinical trial backed'
+      ],
+      inStock: true,
+      icon: 'pill'
     },
     {
       id: 4,
-      name: 'VitaMax Complete',
-      category: 'vitamins',
-      description: 'Complete multivitamin formula with essential nutrients for daily wellness.',
-      image: 'assets/images/products/vitamins.jpg',
-      price: '₹399',
-      features: ['25+ Vitamins & Minerals', 'Energy Boost', 'Immunity Support'],
-      inStock: true
+      name: 'P-Cillin LB 625',
+      composition: 'Amoxicillin + Clavulanate + Lactic Acid Bacillus Tablets',
+      category: 'antibiotics',
+      description: 'An advanced antibiotic + probiotic combination designed to treat bacterial infections while preserving gut flora. The lactic acid bacillus helps prevent antibiotic-associated diarrhea.',
+      formulation: 'Tablet',
+      packaging: 'Strip Pack',
+      features: [
+        'Broad-spectrum antibiotic coverage',
+        'Preserves gut flora during treatment',
+        'Reduces antibiotic side effects',
+        'Prevents antibiotic-associated diarrhea',
+        'Combination therapy advantage',
+        'Enhanced patient compliance'
+      ],
+      inStock: true,
+      icon: 'shield-plus'
     },
     {
       id: 5,
-      name: 'PainRelief Ultra',
-      category: 'pain-relief',
-      description: 'Fast-acting pain relief for headaches, muscle pain, and inflammation.',
-      image: 'assets/images/products/pain.jpg',
-      price: '₹199',
-      features: ['Quick Relief', 'Long-lasting Effect', 'Non-drowsy Formula'],
-      inStock: true
+      name: 'P-Cillin 228.5',
+      composition: 'Amoxicillin + Clavulanate Dry Syrup',
+      category: 'antibiotics',
+      description: 'Broad-spectrum pediatric antibiotic with high palatability and proven effectiveness. Specially formulated for children with pleasant taste for better compliance.',
+      formulation: 'Dry Syrup',
+      packaging: 'Bottle',
+      features: [
+        'Pediatric formulation',
+        'High palatability for children',
+        'Broad-spectrum coverage',
+        'Proven effectiveness',
+        'Easy reconstitution',
+        'Pleasant taste'
+      ],
+      inStock: true,
+      icon: 'baby'
     },
     {
       id: 6,
-      name: 'RespiCare Advanced',
-      category: 'respiratory',
-      description: 'Respiratory health support for easier breathing and lung function.',
-      image: 'assets/images/products/respiratory.jpg',
-      price: '₹449',
-      features: ['Lung Support', 'Breathing Aid', 'Allergy Relief'],
-      inStock: true
+      name: 'P-Cillin 457 Forte',
+      composition: 'Amoxicillin + Clavulanic Acid',
+      category: 'antibiotics',
+      description: 'A powerful formulation offering robust coverage for moderate to severe infections. High-strength combination for enhanced therapeutic efficacy.',
+      formulation: 'Tablet/Suspension',
+      packaging: 'Strip/Bottle',
+      features: [
+        'High-strength formulation',
+        'Moderate to severe infection coverage',
+        'Enhanced therapeutic efficacy',
+        'Broad-spectrum activity',
+        'Beta-lactamase inhibitor included',
+        'Proven clinical effectiveness'
+      ],
+      inStock: true,
+      icon: 'pill-bottle'
     },
     {
       id: 7,
-      name: 'HeartShield Omega-3',
-      category: 'cardiovascular',
-      description: 'Premium omega-3 supplement for cardiovascular and cognitive health.',
-      image: 'assets/images/products/omega3.jpg',
-      price: '₹699',
-      features: ['High EPA/DHA', 'Heart Health', 'Brain Function'],
-      inStock: true
-    },
-    {
-      id: 8,
-      name: 'DiabeCare Strips',
-      category: 'diabetes',
-      description: 'Accurate blood glucose monitoring strips for diabetes management.',
-      image: 'assets/images/products/strips.jpg',
-      price: '₹899',
-      features: ['High Accuracy', '50 Test Strips', 'Easy to Use'],
-      inStock: false
-    },
-    {
-      id: 9,
-      name: 'ImmunoBoost Pro',
-      category: 'vitamins',
-      description: 'Advanced immunity booster with vitamin C, D3, and zinc.',
-      image: 'assets/images/products/immune.jpg',
-      price: '₹549',
-      features: ['Immunity Boost', 'Antioxidant Rich', 'Daily Defense'],
-      inStock: true
-    },
-    {
-      id: 10,
-      name: 'ArthriCare Joint Support',
-      category: 'pain-relief',
-      description: 'Joint health formula for flexibility and reduced inflammation.',
-      image: 'assets/images/products/joint.jpg',
-      price: '₹799',
-      features: ['Joint Flexibility', 'Cartilage Support', 'Anti-inflammatory'],
-      inStock: true
-    },
-    {
-      id: 11,
-      name: 'BronchoClear Syrup',
-      category: 'respiratory',
-      description: 'Natural cough syrup for respiratory relief and throat soothing.',
-      image: 'assets/images/products/syrup.jpg',
-      price: '₹249',
-      features: ['Natural Formula', 'Cough Relief', 'Throat Comfort'],
-      inStock: true
-    },
-    {
-      id: 12,
-      name: 'ProbioHealth Digestive',
-      category: 'vitamins',
-      description: 'Probiotic supplement for digestive health and gut balance.',
-      image: 'assets/images/products/probiotic.jpg',
-      price: '₹649',
-      features: ['10 Billion CFU', 'Gut Health', 'Digestive Support'],
-      inStock: true
+      name: 'Medicyp Syrup',
+      composition: 'Cyproheptadine + B-Complex + Nicotinamide + D-Panthenol',
+      category: 'appetite',
+      description: 'A clinically validated appetite stimulant and nutritional support syrup for children and adults. Combines appetite enhancement with essential B vitamins for comprehensive nutritional support.',
+      formulation: 'Syrup',
+      packaging: 'Bottle',
+      features: [
+        'Stimulates appetite effectively',
+        'Contains essential B-vitamins',
+        'Nutritional support',
+        'Suitable for children and adults',
+        'Clinically validated formula',
+        'Pleasant taste for compliance'
+      ],
+      inStock: true,
+      icon: 'droplet'
     }
   ];
 
@@ -170,8 +182,10 @@ export class ProductsPage {
       const query = this.searchQuery.toLowerCase();
       filtered = filtered.filter(p =>
         p.name.toLowerCase().includes(query) ||
+        p.composition.toLowerCase().includes(query) ||
         p.description.toLowerCase().includes(query) ||
-        p.category.toLowerCase().includes(query)
+        p.category.toLowerCase().includes(query) ||
+        p.features.some(f => f.toLowerCase().includes(query))
       );
     }
 

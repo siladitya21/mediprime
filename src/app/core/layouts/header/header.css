@@ -1,31 +1,40 @@
-/* header.css */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .animate-fade-in {
+    animation: fade-in 0.2s ease-out;
   }
-}
 
-.animate-fade-in {
-  animation: fade-in 0.3s ease-out;
-}
+  /* Prevent layout shift when mobile menu opens */
+  @media (max-width: 767px) {
+    header {
+      position: sticky;
+      top: 0;
+    }
+  }
 
-/* Smooth scrolling for anchor links */
-html {
-  scroll-behavior: smooth;
-}
+  /* Smooth scrolling when menu closes */
+  html {
+    scroll-behavior: smooth;
+  }
 
-/* Optional: Add a subtle gradient overlay for depth */
-header::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgb(30 58 138 / 0.2), transparent);
-}
+  /* Extra small devices optimization */
+  @media (max-width: 374px) {
+    .xs\:block {
+      display: none !important;
+    }
+  }
+
+  @media (min-width: 375px) {
+    .xs\:block {
+      display: block !important;
+    }
+  }

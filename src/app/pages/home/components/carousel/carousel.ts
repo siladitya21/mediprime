@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LucideAngularModule } from "lucide-angular";
 
@@ -8,73 +8,47 @@ import { LucideAngularModule } from "lucide-angular";
   templateUrl: './carousel.html',
   styleUrl: './carousel.css',
 })
-export class Carousel implements OnInit, OnDestroy {
+export class Carousel {
   currentSlide = 0;
   slides = [
     {
-      image: '/api/placeholder/1200/675',
-      title: 'Cardiovascular Health',
-      description: 'Advanced heart health medications for better cardiovascular wellness'
+      image: 'assets/images/a.png',
+      title: 'Research & Development',
+      description: 'Pioneering breakthrough therapies through cutting-edge pharmaceutical research'
     },
     {
-      image: '/api/placeholder/1200/675',
-      title: 'Respiratory Care',
-      description: 'Innovative solutions for asthma, COPD and breathing disorders'
+      image: 'assets/images/b.png',
+      title: 'Drug Manufacturing',
+      description: 'State-of-the-art production facilities ensuring highest quality standards'
     },
     {
-      image: '/api/placeholder/1200/675',
-      title: 'Pain Management',
-      description: 'Effective pain relief solutions with minimal side effects'
+      image: 'assets/images/c.png',
+      title: 'Clinical Trials',
+      description: 'Rigorous testing and validation for safe and effective medications'
     },
     {
-      image: '/api/placeholder/1200/675',
-      title: 'Digestive Health',
-      description: 'Comprehensive gastrointestinal care for optimal digestion'
+      image: 'assets/images/d.png',
+      title: 'Quality Assurance',
+      description: 'Stringent quality control processes for pharmaceutical excellence'
+    },
+    {
+      image: 'assets/images/e.png',
+      title: 'Global Distribution',
+      description: 'Delivering life-saving medicines to patients worldwide'
     }
   ];
 
-  private autoPlayInterval: any;
-  private autoPlayDuration = 4000; // 4 seconds
-
-  ngOnInit(): void {
-    this.startAutoPlay();
-  }
-
-  ngOnDestroy(): void {
-    this.stopAutoPlay();
-  }
-
   nextSlide(): void {
     this.currentSlide = (this.currentSlide + 1) % this.slides.length;
-    this.resetAutoPlay();
   }
 
   previousSlide(): void {
     this.currentSlide = this.currentSlide === 0
       ? this.slides.length - 1
       : this.currentSlide - 1;
-    this.resetAutoPlay();
   }
 
   goToSlide(index: number): void {
     this.currentSlide = index;
-    this.resetAutoPlay();
-  }
-
-  private startAutoPlay(): void {
-    this.autoPlayInterval = setInterval(() => {
-      this.nextSlide();
-    }, this.autoPlayDuration);
-  }
-
-  private stopAutoPlay(): void {
-    if (this.autoPlayInterval) {
-      clearInterval(this.autoPlayInterval);
-    }
-  }
-
-  private resetAutoPlay(): void {
-    this.stopAutoPlay();
-    this.startAutoPlay();
   }
 }

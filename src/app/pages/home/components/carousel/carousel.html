@@ -1,220 +1,341 @@
-<section class="relative py-20 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 overflow-hidden">
-    <!-- Matrix-Style Flowing Text Background -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
-        <!-- Column 1 -->
-        <div class="absolute left-[5%] top-0 animate-matrix-fall animation-delay-0">
-            <div class="flex flex-col gap-4 text-blue-400 font-mono text-sm">
-                <span>PHARMACEUTICAL</span>
-                <span>INNOVATION</span>
-                <span>MEDICINE</span>
-                <span>HEALTHCARE</span>
-                <span>BIOTECH</span>
-                <span>RESEARCH</span>
-                <span>WELLNESS</span>
-                <span>THERAPY</span>
-            </div>
+<section class="relative py-20 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 overflow-hidden">
+    <!-- Animated DNA Helixes Background -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <!-- DNA Helix 1 - Left Side -->
+        <div class="absolute left-0 top-1/4 w-32 h-96 opacity-20">
+            <svg class="w-full h-full animate-dna-rotate" viewBox="0 0 100 400" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="dna-gradient-1" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#14b8a6;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <!-- Left strand -->
+                <path d="M 20 0 Q 60 50, 20 100 Q -20 150, 20 200 Q 60 250, 20 300 Q -20 350, 20 400" 
+                      stroke="url(#dna-gradient-1)" stroke-width="3" fill="none"/>
+                <!-- Right strand -->
+                <path d="M 80 0 Q 40 50, 80 100 Q 120 150, 80 200 Q 40 250, 80 300 Q 120 350, 80 400" 
+                      stroke="url(#dna-gradient-1)" stroke-width="3" fill="none"/>
+                <!-- Base pairs -->
+                <line x1="20" y1="25" x2="80" y2="25" stroke="#3b82f6" stroke-width="2" opacity="0.6">
+                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+                </line>
+                <line x1="35" y1="75" x2="65" y2="75" stroke="#14b8a6" stroke-width="2" opacity="0.6">
+                    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+                </line>
+                <line x1="20" y1="125" x2="80" y2="125" stroke="#8b5cf6" stroke-width="2" opacity="0.6">
+                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+                </line>
+                <line x1="35" y1="175" x2="65" y2="175" stroke="#3b82f6" stroke-width="2" opacity="0.6">
+                    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+                </line>
+                <line x1="20" y1="225" x2="80" y2="225" stroke="#14b8a6" stroke-width="2" opacity="0.6">
+                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+                </line>
+                <line x1="35" y1="275" x2="65" y2="275" stroke="#8b5cf6" stroke-width="2" opacity="0.6">
+                    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+                </line>
+                <line x1="20" y1="325" x2="80" y2="325" stroke="#3b82f6" stroke-width="2" opacity="0.6">
+                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+                </line>
+                <line x1="35" y1="375" x2="65" y2="375" stroke="#14b8a6" stroke-width="2" opacity="0.6">
+                    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+                </line>
+            </svg>
         </div>
 
-        <!-- Column 2 -->
-        <div class="absolute left-[20%] top-0 animate-matrix-fall animation-delay-1000">
-            <div class="flex flex-col gap-4 text-teal-400 font-mono text-sm">
-                <span>CARDIOLOGY</span>
-                <span>NEUROLOGY</span>
-                <span>ONCOLOGY</span>
-                <span>PEDIATRICS</span>
-                <span>SURGERY</span>
-                <span>DIAGNOSTICS</span>
-                <span>TREATMENT</span>
-                <span>RECOVERY</span>
-            </div>
+        <!-- DNA Helix 2 - Right Side -->
+        <div class="absolute right-0 top-1/3 w-32 h-96 opacity-20">
+            <svg class="w-full h-full animate-dna-rotate-reverse" viewBox="0 0 100 400" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="dna-gradient-2" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#14b8a6;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path d="M 20 0 Q 60 50, 20 100 Q -20 150, 20 200 Q 60 250, 20 300 Q -20 350, 20 400" 
+                      stroke="url(#dna-gradient-2)" stroke-width="3" fill="none"/>
+                <path d="M 80 0 Q 40 50, 80 100 Q 120 150, 80 200 Q 40 250, 80 300 Q 120 350, 80 400" 
+                      stroke="url(#dna-gradient-2)" stroke-width="3" fill="none"/>
+                <line x1="20" y1="25" x2="80" y2="25" stroke="#8b5cf6" stroke-width="2" opacity="0.6">
+                    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2.5s" repeatCount="indefinite"/>
+                </line>
+                <line x1="35" y1="75" x2="65" y2="75" stroke="#14b8a6" stroke-width="2" opacity="0.6">
+                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.5s" repeatCount="indefinite"/>
+                </line>
+                <line x1="20" y1="125" x2="80" y2="125" stroke="#3b82f6" stroke-width="2" opacity="0.6">
+                    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2.5s" repeatCount="indefinite"/>
+                </line>
+                <line x1="35" y1="175" x2="65" y2="175" stroke="#8b5cf6" stroke-width="2" opacity="0.6">
+                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.5s" repeatCount="indefinite"/>
+                </line>
+                <line x1="20" y1="225" x2="80" y2="225" stroke="#14b8a6" stroke-width="2" opacity="0.6">
+                    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2.5s" repeatCount="indefinite"/>
+                </line>
+                <line x1="35" y1="275" x2="65" y2="275" stroke="#3b82f6" stroke-width="2" opacity="0.6">
+                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.5s" repeatCount="indefinite"/>
+                </line>
+                <line x1="20" y1="325" x2="80" y2="325" stroke="#8b5cf6" stroke-width="2" opacity="0.6">
+                    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2.5s" repeatCount="indefinite"/>
+                </line>
+                <line x1="35" y1="375" x2="65" y2="375" stroke="#14b8a6" stroke-width="2" opacity="0.6">
+                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.5s" repeatCount="indefinite"/>
+                </line>
+            </svg>
         </div>
 
-        <!-- Column 3 -->
-        <div class="absolute left-[35%] top-0 animate-matrix-fall animation-delay-2000">
-            <div class="flex flex-col gap-4 text-purple-400 font-mono text-sm">
-                <span>MOLECULES</span>
-                <span>COMPOUNDS</span>
-                <span>SYNTHESIS</span>
-                <span>ANALYSIS</span>
-                <span>TESTING</span>
-                <span>QUALITY</span>
-                <span>SAFETY</span>
-                <span>EFFICACY</span>
-            </div>
+        <!-- DNA Helix 3 - Top Left -->
+        <div class="absolute left-1/4 top-0 w-24 h-64 opacity-15">
+            <svg class="w-full h-full animate-dna-float" viewBox="0 0 100 300" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="dna-gradient-3" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#14b8a6;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path d="M 30 0 Q 60 40, 30 80 Q 0 120, 30 160 Q 60 200, 30 240 Q 0 280, 30 300" 
+                      stroke="url(#dna-gradient-3)" stroke-width="2.5" fill="none"/>
+                <path d="M 70 0 Q 40 40, 70 80 Q 100 120, 70 160 Q 40 200, 70 240 Q 100 280, 70 300" 
+                      stroke="url(#dna-gradient-3)" stroke-width="2.5" fill="none"/>
+                <line x1="30" y1="20" x2="70" y2="20" stroke="#14b8a6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3s" repeatCount="indefinite"/>
+                </line>
+                <line x1="40" y1="60" x2="60" y2="60" stroke="#3b82f6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.7;0.3;0.7" dur="3s" repeatCount="indefinite"/>
+                </line>
+                <line x1="30" y1="100" x2="70" y2="100" stroke="#14b8a6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3s" repeatCount="indefinite"/>
+                </line>
+                <line x1="40" y1="140" x2="60" y2="140" stroke="#3b82f6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.7;0.3;0.7" dur="3s" repeatCount="indefinite"/>
+                </line>
+                <line x1="30" y1="180" x2="70" y2="180" stroke="#14b8a6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3s" repeatCount="indefinite"/>
+                </line>
+                <line x1="40" y1="220" x2="60" y2="220" stroke="#3b82f6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.7;0.3;0.7" dur="3s" repeatCount="indefinite"/>
+                </line>
+            </svg>
         </div>
 
-        <!-- Column 4 -->
-        <div class="absolute left-[50%] top-0 animate-matrix-fall animation-delay-3000">
-            <div class="flex flex-col gap-4 text-blue-400 font-mono text-sm">
-                <span>VACCINES</span>
-                <span>ANTIBODIES</span>
-                <span>PROTEINS</span>
-                <span>ENZYMES</span>
-                <span>HORMONES</span>
-                <span>VITAMINS</span>
-                <span>MINERALS</span>
-                <span>NUTRIENTS</span>
-            </div>
+        <!-- DNA Helix 4 - Top Right -->
+        <div class="absolute right-1/4 top-10 w-24 h-64 opacity-15">
+            <svg class="w-full h-full animate-dna-float-delay" viewBox="0 0 100 300" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="dna-gradient-4" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#14b8a6;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path d="M 30 0 Q 60 40, 30 80 Q 0 120, 30 160 Q 60 200, 30 240 Q 0 280, 30 300" 
+                      stroke="url(#dna-gradient-4)" stroke-width="2.5" fill="none"/>
+                <path d="M 70 0 Q 40 40, 70 80 Q 100 120, 70 160 Q 40 200, 70 240 Q 100 280, 70 300" 
+                      stroke="url(#dna-gradient-4)" stroke-width="2.5" fill="none"/>
+                <line x1="30" y1="20" x2="70" y2="20" stroke="#8b5cf6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.7;0.3;0.7" dur="3.5s" repeatCount="indefinite"/>
+                </line>
+                <line x1="40" y1="60" x2="60" y2="60" stroke="#14b8a6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.5s" repeatCount="indefinite"/>
+                </line>
+                <line x1="30" y1="100" x2="70" y2="100" stroke="#8b5cf6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.7;0.3;0.7" dur="3.5s" repeatCount="indefinite"/>
+                </line>
+                <line x1="40" y1="140" x2="60" y2="140" stroke="#14b8a6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.5s" repeatCount="indefinite"/>
+                </line>
+                <line x1="30" y1="180" x2="70" y2="180" stroke="#8b5cf6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.7;0.3;0.7" dur="3.5s" repeatCount="indefinite"/>
+                </line>
+                <line x1="40" y1="220" x2="60" y2="220" stroke="#14b8a6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.5s" repeatCount="indefinite"/>
+                </line>
+            </svg>
         </div>
 
-        <!-- Column 5 -->
-        <div class="absolute left-[65%] top-0 animate-matrix-fall animation-delay-4000">
-            <div class="flex flex-col gap-4 text-teal-400 font-mono text-sm">
-                <span>CLINICAL</span>
-                <span>TRIALS</span>
-                <span>STUDIES</span>
-                <span>RESULTS</span>
-                <span>DATA</span>
-                <span>EVIDENCE</span>
-                <span>PROOF</span>
-                <span>SCIENCE</span>
-            </div>
+        <!-- DNA Helix 5 - Bottom Left -->
+        <div class="absolute left-1/3 bottom-10 w-20 h-48 opacity-15">
+            <svg class="w-full h-full animate-dna-rotate" viewBox="0 0 100 250" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="dna-gradient-5" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path d="M 30 0 Q 60 30, 30 60 Q 0 90, 30 120 Q 60 150, 30 180 Q 0 210, 30 250" 
+                      stroke="url(#dna-gradient-5)" stroke-width="2" fill="none"/>
+                <path d="M 70 0 Q 40 30, 70 60 Q 100 90, 70 120 Q 40 150, 70 180 Q 100 210, 70 250" 
+                      stroke="url(#dna-gradient-5)" stroke-width="2" fill="none"/>
+                <line x1="30" y1="15" x2="70" y2="15" stroke="#3b82f6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2.8s" repeatCount="indefinite"/>
+                </line>
+                <line x1="40" y1="45" x2="60" y2="45" stroke="#8b5cf6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.7;0.3;0.7" dur="2.8s" repeatCount="indefinite"/>
+                </line>
+                <line x1="30" y1="75" x2="70" y2="75" stroke="#3b82f6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2.8s" repeatCount="indefinite"/>
+                </line>
+                <line x1="40" y1="105" x2="60" y2="105" stroke="#8b5cf6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.7;0.3;0.7" dur="2.8s" repeatCount="indefinite"/>
+                </line>
+            </svg>
         </div>
 
-        <!-- Column 6 -->
-        <div class="absolute left-[80%] top-0 animate-matrix-fall animation-delay-5000">
-            <div class="flex flex-col gap-4 text-purple-400 font-mono text-sm">
-                <span>PATIENTS</span>
-                <span>HEALING</span>
-                <span>RECOVERY</span>
-                <span>HEALTH</span>
-                <span>WELLNESS</span>
-                <span>CARE</span>
-                <span>SUPPORT</span>
-                <span>LIFE</span>
-            </div>
+        <!-- DNA Helix 6 - Bottom Right -->
+        <div class="absolute right-1/3 bottom-20 w-20 h-48 opacity-15">
+            <svg class="w-full h-full animate-dna-rotate-reverse" viewBox="0 0 100 250" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="dna-gradient-6" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#14b8a6;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path d="M 30 0 Q 60 30, 30 60 Q 0 90, 30 120 Q 60 150, 30 180 Q 0 210, 30 250" 
+                      stroke="url(#dna-gradient-6)" stroke-width="2" fill="none"/>
+                <path d="M 70 0 Q 40 30, 70 60 Q 100 90, 70 120 Q 40 150, 70 180 Q 100 210, 70 250" 
+                      stroke="url(#dna-gradient-6)" stroke-width="2" fill="none"/>
+                <line x1="30" y1="15" x2="70" y2="15" stroke="#14b8a6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.7;0.3;0.7" dur="3.2s" repeatCount="indefinite"/>
+                </line>
+                <line x1="40" y1="45" x2="60" y2="45" stroke="#3b82f6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.2s" repeatCount="indefinite"/>
+                </line>
+                <line x1="30" y1="75" x2="70" y2="75" stroke="#14b8a6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.7;0.3;0.7" dur="3.2s" repeatCount="indefinite"/>
+                </line>
+                <line x1="40" y1="105" x2="60" y2="105" stroke="#3b82f6" stroke-width="1.5" opacity="0.5">
+                    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.2s" repeatCount="indefinite"/>
+                </line>
+            </svg>
         </div>
 
-        <!-- Column 7 -->
-        <div class="absolute left-[95%] top-0 animate-matrix-fall animation-delay-6000">
-            <div class="flex flex-col gap-4 text-blue-400 font-mono text-sm">
-                <span>DISCOVERY</span>
-                <span>DEVELOP</span>
-                <span>DELIVER</span>
-                <span>OPTIMIZE</span>
-                <span>IMPROVE</span>
-                <span>ADVANCE</span>
-                <span>PROGRESS</span>
-                <span>FUTURE</span>
-            </div>
+        <!-- Floating DNA particles -->
+        <div class="absolute inset-0">
+            <div class="absolute left-[15%] top-[20%] w-3 h-3 bg-blue-400/30 rounded-full animate-float-slow"></div>
+            <div class="absolute left-[85%] top-[30%] w-2 h-2 bg-teal-400/30 rounded-full animate-float-medium"></div>
+            <div class="absolute left-[10%] top-[70%] w-2 h-2 bg-purple-400/30 rounded-full animate-float-fast"></div>
+            <div class="absolute left-[90%] top-[60%] w-3 h-3 bg-blue-400/30 rounded-full animate-float-slow"></div>
+            <div class="absolute left-[20%] top-[90%] w-2 h-2 bg-teal-400/30 rounded-full animate-float-medium"></div>
+            <div class="absolute left-[80%] top-[85%] w-2 h-2 bg-purple-400/30 rounded-full animate-float-fast"></div>
         </div>
-    </div>
-
-    <!-- Grid Overlay -->
-    <div class="absolute inset-0 opacity-[0.03]"
-        style="background-image: linear-gradient(rgb(59 130 246) 1px, transparent 1px), linear-gradient(90deg, rgb(59 130 246) 1px, transparent 1px); background-size: 50px 50px;">
     </div>
 
     <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">Excellence</span>
+            </h2>
+            <p class="text-white/70 text-lg max-w-2xl mx-auto">
+                Discover how we're transforming healthcare through innovation and dedication
+            </p>
+        </div>
 
-        <!-- Simple Carousel Container -->
-        <div class="relative max-w-5xl mx-auto">
-
-            <!-- Slides Container -->
-            <div class="overflow-hidden rounded-2xl shadow-2xl">
-                <div class="flex transition-transform duration-700 ease-in-out"
-                    [style.transform]="'translateX(-' + currentSlide * 100 + '%)'">
-
-                    <!-- Slide 1 -->
-                    <div class="min-w-full">
-                        <div class="relative">
-                            <div class="aspect-[16/9] bg-gradient-to-br from-blue-900/20 to-blue-950/20">
-                                <img src="https://iated.org/iceri/img/iceri24-035.jpg" alt="Cardiovascular Medicine"
-                                    class="w-full h-full object-cover">
-                            </div>
-                            <div
-                                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-8">
-                                <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">
-                                    Cardiovascular Health
+        <!-- Modern Carousel Container -->
+        <div class="relative max-w-7xl mx-auto">
+            <!-- Main Carousel -->
+            <div class="relative overflow-hidden rounded-3xl">
+                <!-- Slides -->
+                <div class="relative h-[600px]">
+                    <div *ngFor="let slide of slides; let i = index" 
+                         [class.opacity-100]="currentSlide === i"
+                         [class.opacity-0]="currentSlide !== i"
+                         [class.scale-100]="currentSlide === i"
+                         [class.scale-95]="currentSlide !== i"
+                         class="absolute inset-0 transition-all duration-700 ease-out">
+                        
+                        <!-- Image with Overlay -->
+                        <div class="relative h-full w-full group">
+                            <img [src]="slide.image" 
+                                 [alt]="slide.title"
+                                 class="w-full h-full object-cover">
+                            
+                            <!-- Gradient Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                            
+                            <!-- Content -->
+                            <div class="absolute inset-0 flex flex-col justify-end p-12">
+                                <!-- Title with Animation -->
+                                <h3 class="text-4xl md:text-5xl font-bold text-white mb-4 transform transition-all duration-500"
+                                    [class.translate-y-0]="currentSlide === i"
+                                    [class.translate-y-10]="currentSlide !== i">
+                                    {{ slide.title }}
                                 </h3>
-                                <p class="text-white/90 text-lg">
-                                    Advanced heart health medications for better cardiovascular wellness
+                                
+                                <!-- Description with Animation -->
+                                <p class="text-xl text-white/90 max-w-2xl transform transition-all duration-500 delay-100"
+                                   [class.translate-y-0]="currentSlide === i"
+                                   [class.translate-y-10]="currentSlide !== i">
+                                    {{ slide.description }}
                                 </p>
+                                
+                                <!-- Decorative Line -->
+                                <div class="mt-6 h-1 w-24 bg-gradient-to-r from-blue-400 to-teal-400 rounded-full transform transition-all duration-500 delay-200"
+                                     [class.translate-x-0]="currentSlide === i"
+                                     [class.-translate-x-full]="currentSlide !== i">
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Slide 2 -->
-                    <div class="min-w-full">
-                        <div class="relative">
-                            <div class="aspect-[16/9] bg-gradient-to-br from-teal-900/20 to-teal-950/20">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaTd5CSqr3i0EoizI8dcJ4t60szWcbLlCH3w&s"
-                                    alt="Respiratory Care" class="w-full h-full object-cover">
-                            </div>
-                            <div
-                                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-8">
-                                <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">
-                                    Respiratory Care
-                                </h3>
-                                <p class="text-white/90 text-lg">
-                                    Innovative solutions for asthma, COPD and breathing disorders
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 3 -->
-                    <div class="min-w-full">
-                        <div class="relative">
-                            <div class="aspect-[16/9] bg-gradient-to-br from-purple-900/20 to-purple-950/20">
-                                <img src="https://img-cdn.inc.com/image/upload/f_webp,c_fit,w_1920,q_auto/images/panoramic/getty_499517325_111832.jpg"
-                                    alt="Pain Management" class="w-full h-full object-cover">
-                            </div>
-                            <div
-                                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-8">
-                                <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">
-                                    Pain Management
-                                </h3>
-                                <p class="text-white/90 text-lg">
-                                    Effective pain relief solutions with minimal side effects
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 4 -->
-                    <div class="min-w-full">
-                        <div class="relative">
-                            <div class="aspect-[16/9] bg-gradient-to-br from-green-900/20 to-green-950/20">
-                                <img src="https://cdn.prod.website-files.com/685dc0d3783c5b149e061183/68c95efed61f38d8d663ecd3_Conference%20value%20prop%20her.jpg"
-                                    alt="Digestive Health" class="w-full h-full object-cover">
-                            </div>
-                            <div
-                                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-8">
-                                <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">
-                                    Digestive Health
-                                </h3>
-                                <p class="text-white/90 text-lg">
-                                    Comprehensive gastrointestinal care for optimal digestion
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
-            <!-- Navigation Arrows -->
-            <button (click)="previousSlide()"
-                class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg">
-                <lucide-icon name="chevron-left" [size]="24" class="text-blue-900"></lucide-icon>
-            </button>
+            <!-- Navigation Controls -->
+            <div class="absolute inset-0 flex items-center justify-between px-6 pointer-events-none">
+                <!-- Previous Button -->
+                <button (click)="previousSlide()"
+                        class="pointer-events-auto group relative w-14 h-14 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300 shadow-xl">
+                    <lucide-icon name="chevron-left" [size]="28" class="text-white group-hover:scale-110 transition-transform"></lucide-icon>
+                </button>
 
-            <button (click)="nextSlide()"
-                class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg">
-                <lucide-icon name="chevron-right" [size]="24" class="text-blue-900"></lucide-icon>
-            </button>
-
-            <!-- Pagination Dots -->
-            <div class="flex items-center justify-center gap-2 mt-8">
-                <button *ngFor="let slide of slides; let i = index" (click)="goToSlide(i)" [ngClass]="{
-                            'bg-blue-400 w-8': currentSlide === i,
-                            'bg-blue-300 opacity-50 w-2': currentSlide !== i
-                        }" class="h-2 rounded-full transition-all duration-300 hover:bg-blue-500">
+                <!-- Next Button -->
+                <button (click)="nextSlide()"
+                        class="pointer-events-auto group relative w-14 h-14 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300 shadow-xl">
+                    <lucide-icon name="chevron-right" [size]="28" class="text-white group-hover:scale-110 transition-transform"></lucide-icon>
                 </button>
             </div>
 
-        </div>
+            <!-- Progress Bar & Dots -->
+            <div class="mt-8 flex items-center justify-center">
+                <!-- Dots Navigation -->
+                <div class="flex items-center gap-3">
+                    <button *ngFor="let slide of slides; let i = index" 
+                            (click)="goToSlide(i)"
+                            class="relative group">
+                        <!-- Outer Ring -->
+                        <div [class.scale-100]="currentSlide === i"
+                             [class.scale-0]="currentSlide !== i"
+                             class="absolute inset-0 -m-1 rounded-full border-2 border-blue-400 transition-transform duration-300">
+                        </div>
+                        <!-- Dot -->
+                        <div [class.bg-gradient-to-r]="currentSlide === i"
+                             [class.from-blue-400]="currentSlide === i"
+                             [class.to-teal-400]="currentSlide === i"
+                             [class.w-3]="currentSlide === i"
+                             [class.h-3]="currentSlide === i"
+                             [class.bg-white/40]="currentSlide !== i"
+                             [class.w-2]="currentSlide !== i"
+                             [class.h-2]="currentSlide !== i"
+                             class="rounded-full transition-all duration-300 group-hover:scale-125">
+                        </div>
+                    </button>
+                </div>
+            </div>
 
+            <!-- Thumbnail Preview (Optional) -->
+            <div class="hidden lg:flex gap-4 mt-8 justify-center">
+                <button *ngFor="let slide of slides; let i = index"
+                        (click)="goToSlide(i)"
+                        [class.ring-2]="currentSlide === i"
+                        [class.ring-blue-400]="currentSlide === i"
+                        [class.opacity-100]="currentSlide === i"
+                        [class.opacity-50]="currentSlide !== i"
+                        class="relative w-24 h-16 rounded-lg overflow-hidden transition-all duration-300 hover:opacity-100 hover:scale-105">
+                    <img [src]="slide.image" [alt]="slide.title" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                </button>
+            </div>
+        </div>
     </div>
 </section>

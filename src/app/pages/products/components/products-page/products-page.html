@@ -13,9 +13,9 @@
                     <lucide-icon name="package" [size]="18" class="text-white"></lucide-icon>
                     <span class="text-sm font-semibold">Our Products</span>
                 </div>
-                <h1 class="text-5xl md:text-6xl font-bold mb-6">Healthcare Solutions</h1>
-                <p class="text-xl md:text-2xl text-blue-100">Discover our comprehensive range of high-quality
-                    pharmaceutical products designed to improve your well-being.</p>
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">Evidence-Based Healthcare Solutions</h1>
+                <p class="text-xl md:text-2xl text-blue-100">Discover our scientifically validated range of
+                    pharmaceutical and nutraceutical products designed for efficacy, safety, and patient compliance.</p>
             </div>
         </div>
     </section>
@@ -50,7 +50,7 @@
                     <lucide-icon name="grid-3x3" [size]="20" class="text-blue-900"></lucide-icon>
                     <h2 class="text-2xl font-bold text-gray-900">Browse by Category</h2>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                     @for (cat of categories; track cat.id) {
                     <button (click)="selectCategory(cat.id)" [class.bg-gradient-to-br]="selectedCategory === cat.id"
                         [class.from-blue-900]="selectedCategory === cat.id"
@@ -104,9 +104,13 @@
                         <div class="relative h-64 bg-gradient-to-br from-blue-900 to-blue-800 overflow-hidden">
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div
-                                    class="w-32 h-32 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center">
-                                    <span class="text-white text-6xl font-bold opacity-80">{{ product.name.charAt(0)
-                                        }}</span>
+                                    class="w-40 h-40 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center p-4">
+                                    <div class="text-center">
+                                        <lucide-icon [name]="product.icon" [size]="56"
+                                            class="text-white mx-auto mb-2"></lucide-icon>
+                                        <span class="text-white text-sm font-semibold opacity-90">{{ product.formulation
+                                            }}</span>
+                                    </div>
                                 </div>
                             </div>
                             @if (!product.inStock) {
@@ -122,6 +126,11 @@
                                 In Stock
                             </div>
                             }
+                            <!-- Category Badge -->
+                            <div
+                                class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-semibold">
+                                {{ getCategoryName(product.category) }}
+                            </div>
                         </div>
 
                         <!-- Product Info -->
@@ -131,15 +140,16 @@
                                     class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-900 transition-colors">
                                     {{ product.name }}
                                 </h3>
-                                <p class="text-gray-600 text-sm line-clamp-2">{{ product.description }}</p>
+                                <p class="text-sm text-blue-900 font-semibold mb-2">{{ product.composition }}</p>
+                                <p class="text-gray-600 text-sm line-clamp-3">{{ product.description }}</p>
                             </div>
 
                             <!-- Features -->
                             <div class="mb-4 space-y-2">
                                 @for (feature of product.features; track feature) {
-                                <div class="flex items-center text-sm text-gray-700">
-                                    <lucide-icon name="check" [size]="16"
-                                        class="text-green-500 mr-2 flex-shrink-0"></lucide-icon>
+                                <div class="flex items-start text-sm text-gray-700">
+                                    <lucide-icon name="circle-check" [size]="16"
+                                        class="text-green-500 mr-2 flex-shrink-0 mt-0.5"></lucide-icon>
                                     <span>{{ feature }}</span>
                                 </div>
                                 }
@@ -148,20 +158,20 @@
                             <!-- Price and Button -->
                             <div class="flex items-center justify-between pt-4 border-t border-gray-200">
                                 <div>
-                                    <p class="text-xs text-gray-500 mb-1">Price</p>
-                                    <p class="text-2xl font-bold text-blue-900">{{ product.price }}</p>
+                                    <p class="text-xs text-gray-500 mb-1">Contact for Price</p>
+                                    <p class="text-sm font-bold text-blue-900">{{ product.packaging }}</p>
                                 </div>
-                                <button [disabled]="!product.inStock"
+                                <!-- <button [disabled]="!product.inStock"
                                     class="group/btn flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-900 to-blue-800 text-white rounded-xl font-semibold hover:from-blue-800 hover:to-blue-700 transform hover:scale-105 transition-all duration-200 shadow-md disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:from-gray-400 disabled:to-gray-500">
                                     @if (product.inStock) {
-                                    <span>View Details</span>
+                                    <span>Inquire</span>
                                     <lucide-icon name="arrow-right" [size]="16"
                                         class="group-hover/btn:translate-x-1 transition-transform"></lucide-icon>
                                     } @else {
                                     <lucide-icon name="ban" [size]="16"></lucide-icon>
                                     <span>Unavailable</span>
                                     }
-                                </button>
+                                </button> -->
                             </div>
                         </div>
                     </div>
@@ -195,45 +205,45 @@
                         <lucide-icon name="star" [size]="18" class="text-blue-900"></lucide-icon>
                         <span class="text-sm font-semibold text-blue-900">Why Choose Us</span>
                     </div>
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Why Choose MediPrime Products?</h2>
-                    <p class="text-xl text-gray-600">Quality and excellence in every product we deliver</p>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Why Choose Mediprime Products?</h2>
+                    <p class="text-xl text-gray-600">Evidence-based formulations backed by clinical research</p>
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div class="group text-center">
                         <div
                             class="w-20 h-20 bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <lucide-icon name="microscope" [size]="32" class="text-white"></lucide-icon>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Clinically Validated</h3>
+                        <p class="text-gray-600">Products backed by research with academic institutions</p>
+                    </div>
+
+                    <div class="group text-center">
+                        <div
+                            class="w-20 h-20 bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                             <lucide-icon name="shield-check" [size]="32" class="text-white"></lucide-icon>
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-2">Quality Assured</h3>
-                        <p class="text-gray-600">All products meet international quality standards</p>
+                        <p class="text-gray-600">Stringent quality standards and safety benchmarks</p>
                     </div>
 
                     <div class="group text-center">
                         <div
                             class="w-20 h-20 bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                            <lucide-icon name="indian-rupee" [size]="32" class="text-white"></lucide-icon>
+                            <lucide-icon name="flask-conical" [size]="32" class="text-white"></lucide-icon>
                         </div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">Affordable Prices</h3>
-                        <p class="text-gray-600">Best value for your healthcare needs</p>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Scientific Innovation</h3>
+                        <p class="text-gray-600">Research-driven formulations for unmet needs</p>
                     </div>
 
                     <div class="group text-center">
                         <div
                             class="w-20 h-20 bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                            <lucide-icon name="truck" [size]="32" class="text-white"></lucide-icon>
+                            <lucide-icon name="heart-handshake" [size]="32" class="text-white"></lucide-icon>
                         </div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">Fast Delivery</h3>
-                        <p class="text-gray-600">Quick and reliable shipping worldwide</p>
-                    </div>
-
-                    <div class="group text-center">
-                        <div
-                            class="w-20 h-20 bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                            <lucide-icon name="headset" [size]="32" class="text-white"></lucide-icon>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">Expert Support</h3>
-                        <p class="text-gray-600">Professional guidance and assistance</p>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Patient First</h3>
+                        <p class="text-gray-600">Efficacy, safety, and patient compliance focused</p>
                     </div>
                 </div>
             </div>
@@ -250,14 +260,15 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="max-w-4xl mx-auto text-center">
                 <lucide-icon name="circle-question-mark" [size]="48" class="text-white mx-auto mb-6"></lucide-icon>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Need Help Choosing?</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Need Product Information?</h2>
                 <p class="text-xl text-blue-100 mb-8">
-                    Our healthcare experts are here to help you find the perfect solution for your needs.
+                    Our healthcare experts are ready to provide detailed information about our products and help you
+                    find the right solution.
                 </p>
                 <button routerLink="/contact"
                     class="group inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-900 rounded-xl font-semibold hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-xl">
                     <lucide-icon name="phone" [size]="20"></lucide-icon>
-                    <span>Contact Our Experts</span>
+                    <span>Contact Our Team</span>
                     <lucide-icon name="arrow-right" [size]="20"
                         class="group-hover:translate-x-1 transition-transform"></lucide-icon>
                 </button>

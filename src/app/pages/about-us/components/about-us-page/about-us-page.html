@@ -2,17 +2,21 @@
   <!-- Hero Section -->
   <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white py-32 overflow-hidden">
     <div class="absolute inset-0 opacity-10">
-      <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 1px); background-size: 40px 40px;"></div>
+      <div class="absolute inset-0"
+        style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 1px); background-size: 40px 40px;">
+      </div>
     </div>
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="max-w-4xl mx-auto text-center">
-        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
+        <div
+          class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
           <lucide-icon name="building-2" [size]="18" class="text-white"></lucide-icon>
           <span class="text-sm font-semibold">About Us</span>
         </div>
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">MediPrime Biotech</h1>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">Mediprime Biotech</h1>
         <p class="text-xl md:text-2xl text-blue-100 leading-relaxed">
-          Pioneering healthcare solutions through innovation, integrity, and an unwavering commitment to improving lives worldwide.
+          Innovation in Healthcare, Backed by Science. Evidence-based formulations combining advanced research with
+          ethical practices to make reliable healthcare accessible to all.
         </p>
       </div>
     </div>
@@ -26,7 +30,8 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
           @for (stat of stats; track stat.value) {
           <div class="group">
-            <div class="bg-white border-2 border-blue-100 rounded-2xl p-6 md:p-8 hover:border-blue-300 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+            <div
+              class="bg-white border-2 border-blue-100 rounded-2xl p-6 md:p-8 hover:border-blue-300 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
               <h3 class="text-3xl md:text-4xl font-bold text-blue-900 mb-2">{{ stat.value }}</h3>
               <p class="text-gray-600 font-medium text-sm md:text-base">{{ stat.label }}</p>
             </div>
@@ -50,20 +55,45 @@
             <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Building a Healthier Tomorrow</h2>
             <div class="space-y-4 text-gray-700 leading-relaxed text-lg">
               <p>
-                Founded in 2008, MediPrime Biotech emerged from a simple yet powerful vision: to make world-class healthcare accessible to everyone. What began as a small pharmaceutical company in Kolkata has grown into a leading biotechnology enterprise serving millions across 50 countries.
+                Mediprime Biotech Pvt. Ltd. is a fast-growing Indian pharmaceutical and nutraceutical company
+                headquartered in Kolkata, committed to improving healthcare outcomes through evidence-based innovation,
+                high-quality formulations, and ethical business practices.
               </p>
               <p>
-                Our journey has been marked by relentless innovation, unwavering commitment to quality, and a deep-rooted passion for improving human health. From developing life-saving medications to pioneering breakthrough treatments, we've consistently pushed the boundaries of what's possible in healthcare.
+                Operating on a Pan-India scale, we specialize in scientifically backed products across probiotics,
+                antibiotics with gut-health support, multivitamins, and appetite stimulants. Our portfolio includes
+                Primolac (Pre-Probiotic formulations), the P-Cillin antibiotic series, Medfly 9G multivitamin, and
+                Medicyp syrup.
               </p>
               <p>
-                Today, MediPrime Biotech stands as a testament to the power of dedication, scientific excellence, and the belief that every life matters. Our team of over 2,000 healthcare professionals, researchers, and innovators work tirelessly to bring hope and healing to patients worldwide.
+                What sets us apart is our commitment to clinical validation. We actively collaborate with dental
+                colleges, medical institutions, and research centers across India to conduct clinical trials, efficacy
+                studies, and microbiome analysis—ensuring our products deliver real-world results backed by
+                peer-reviewed evidence.
               </p>
             </div>
           </div>
           <div class="relative">
-            <div class="relative rounded-3xl overflow-hidden shadow-2xl">
-              <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-blue-800/20 z-10"></div>
-              <img src="assets/images/about/story.jpg" alt="Our Story" class="w-full h-[500px] object-cover">
+            <div
+              class="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-blue-900 to-blue-800 h-[500px] flex items-center justify-center">
+              <div class="grid grid-cols-2 gap-4 p-12">
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 flex flex-col items-center justify-center">
+                  <lucide-icon name="microscope" [size]="48" class="text-white mb-2"></lucide-icon>
+                  <span class="text-white font-semibold text-center">Clinical Research</span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 flex flex-col items-center justify-center">
+                  <lucide-icon name="pill" [size]="48" class="text-white mb-2"></lucide-icon>
+                  <span class="text-white font-semibold text-center">Quality Products</span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 flex flex-col items-center justify-center">
+                  <lucide-icon name="users" [size]="48" class="text-white mb-2"></lucide-icon>
+                  <span class="text-white font-semibold text-center">Patient Focus</span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 flex flex-col items-center justify-center">
+                  <lucide-icon name="heart" [size]="48" class="text-white mb-2"></lucide-icon>
+                  <span class="text-white font-semibold text-center">Community Care</span>
+                </div>
+              </div>
             </div>
             <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-100 rounded-3xl -z-10"></div>
             <div class="absolute -top-6 -left-6 w-24 h-24 bg-blue-200 rounded-3xl -z-10"></div>
@@ -77,32 +107,105 @@
   <section class="py-20 bg-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-6xl mx-auto">
-        <div class="grid lg:grid-cols-2 gap-8">
+        <div class="grid lg:grid-cols-2 gap-8 items-stretch">
           <!-- Mission -->
           <div class="relative group">
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-900 rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500"></div>
-            <div class="relative bg-gradient-to-br from-blue-900 to-blue-800 rounded-3xl p-10 text-white">
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-900 rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500">
+            </div>
+            <div class="relative bg-gradient-to-br from-blue-900 to-blue-800 rounded-3xl p-10 text-white h-full flex flex-col">
               <div class="flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl mb-6">
                 <lucide-icon name="target" [size]="32"></lucide-icon>
               </div>
-              <h3 class="text-3xl font-bold mb-4">Our Mission</h3>
-              <p class="text-blue-100 text-lg leading-relaxed">
-                To deliver innovative, high-quality pharmaceutical and biotechnology solutions that improve patient outcomes, while maintaining the highest standards of safety, efficacy, and ethical practices in everything we do.
-              </p>
+              <h3 class="text-3xl font-bold mb-6">Our Mission</h3>
+              <ul class="space-y-4 flex-grow">
+                <li class="flex items-start gap-3">
+                  <div class="flex-shrink-0 mt-0.5">
+                    <lucide-icon name="circle-check" [size]="20" class="text-blue-300"></lucide-icon>
+                  </div>
+                  <p class="text-blue-100 text-base leading-relaxed m-0">
+                    To develop world-class pharmaceutical and nutraceutical formulations
+                  </p>
+                </li>
+
+                <li class="flex items-start gap-3">
+                  <div class="flex-shrink-0 mt-0.5">
+                    <lucide-icon name="circle-check" [size]="20" class="text-blue-300"></lucide-icon>
+                  </div>
+                  <p class="text-blue-100 text-base leading-relaxed m-0">
+                    To collaborate with academic institutions for real-world clinical evidence
+                  </p>
+                </li>
+
+                <li class="flex items-start gap-3">
+                  <div class="flex-shrink-0 mt-0.5">
+                    <lucide-icon name="circle-check" [size]="20" class="text-blue-300"></lucide-icon>
+                  </div>
+                  <p class="text-blue-100 text-base leading-relaxed m-0">
+                    To innovate in unmet therapeutic areas
+                  </p>
+                </li>
+
+                <li class="flex items-start gap-3">
+                  <div class="flex-shrink-0 mt-0.5">
+                    <lucide-icon name="circle-check" [size]="20" class="text-blue-300"></lucide-icon>
+                  </div>
+                  <p class="text-blue-100 text-base leading-relaxed m-0">
+                    To maintain the highest standards of quality, ethics, and safety
+                  </p>
+                </li>
+
+                <li class="flex items-start gap-3">
+                  <div class="flex-shrink-0 mt-0.5">
+                    <lucide-icon name="circle-check" [size]="20" class="text-blue-300"></lucide-icon>
+                  </div>
+                  <p class="text-blue-100 text-base leading-relaxed m-0">
+                    To contribute meaningfully to society and the healthcare ecosystem
+                  </p>
+                </li>
+              </ul>
             </div>
           </div>
 
           <!-- Vision -->
           <div class="relative group">
-            <div class="absolute inset-0 bg-blue-100 rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500"></div>
-            <div class="relative bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-10 border-2 border-blue-200">
+            <div
+              class="absolute inset-0 bg-blue-100 rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500">
+            </div>
+            <div class="relative bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-10 border-2 border-blue-200 h-full flex flex-col">
               <div class="flex items-center justify-center w-16 h-16 bg-blue-900 rounded-2xl mb-6">
                 <lucide-icon name="eye" [size]="32" class="text-white"></lucide-icon>
               </div>
-              <h3 class="text-3xl font-bold mb-4 text-gray-900">Our Vision</h3>
-              <p class="text-gray-700 text-lg leading-relaxed">
-                To be the world's most trusted healthcare partner, recognized for our innovation, quality, and commitment to making life-saving treatments accessible to all, regardless of geography or economic status.
-              </p>
+              <h3 class="text-3xl font-bold mb-6 text-gray-900">Our Vision</h3>
+              <div class="flex-grow flex flex-col justify-between">
+                <p class="text-gray-700 text-lg leading-relaxed mb-8">
+                  To become one of India's most trusted and research-driven healthcare companies by combining innovation
+                  with compassion and delivering high-quality, affordable products backed by strong clinical science.
+                </p>
+                
+                <div class="space-y-4">
+                  <div class="flex items-center gap-3 bg-white/60 rounded-xl p-4">
+                    <div class="flex-shrink-0">
+                      <lucide-icon name="award" [size]="24" class="text-blue-900"></lucide-icon>
+                    </div>
+                    <p class="text-gray-800 text-sm font-medium m-0">Trusted Healthcare Leader</p>
+                  </div>
+                  
+                  <div class="flex items-center gap-3 bg-white/60 rounded-xl p-4">
+                    <div class="flex-shrink-0">
+                      <lucide-icon name="beaker" [size]="24" class="text-blue-900"></lucide-icon>
+                    </div>
+                    <p class="text-gray-800 text-sm font-medium m-0">Research-Driven Innovation</p>
+                  </div>
+                  
+                  <div class="flex items-center gap-3 bg-white/60 rounded-xl p-4">
+                    <div class="flex-shrink-0">
+                      <lucide-icon name="heart-pulse" [size]="24" class="text-blue-900"></lucide-icon>
+                    </div>
+                    <p class="text-gray-800 text-sm font-medium m-0">Compassionate Care</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -110,8 +213,38 @@
     </div>
   </section>
 
-  <!-- Core Values Section -->
+  <!-- Why Choose Mediprime Section -->
   <section class="py-20 bg-gradient-to-b from-blue-50 to-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-2 bg-blue-900/5 rounded-full px-4 py-2 mb-4">
+            <lucide-icon name="star" [size]="18" class="text-blue-900"></lucide-icon>
+            <span class="text-sm font-semibold text-blue-900">Why Choose Us</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Why Choose Mediprime Biotech?</h2>
+          <p class="text-xl text-gray-600">Excellence in every aspect of healthcare delivery</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          @for (reason of whyChooseUs; track reason.title) {
+          <div
+            class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-blue-100 hover:border-blue-300 hover:-translate-y-1 h-full flex flex-col">
+            <div
+              class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+              <lucide-icon [name]="reason.icon" [size]="32" class="text-white"></lucide-icon>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">{{ reason.title }}</h3>
+            <p class="text-gray-600 leading-relaxed flex-grow">{{ reason.description }}</p>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values Section -->
+  <section class="py-20 bg-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16">
@@ -125,12 +258,14 @@
 
         <div class="grid md:grid-cols-2 gap-8">
           @for (value of values; track value.title) {
-          <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-blue-100 hover:border-blue-300">
-            <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+          <div
+            class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-blue-100 hover:border-blue-300 h-full flex flex-col">
+            <div
+              class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
               <lucide-icon [name]="value.iconName" [size]="32" class="text-white"></lucide-icon>
             </div>
             <h3 class="text-2xl font-bold text-gray-900 mb-3">{{ value.title }}</h3>
-            <p class="text-gray-600 leading-relaxed">{{ value.description }}</p>
+            <p class="text-gray-600 leading-relaxed flex-grow">{{ value.description }}</p>
           </div>
           }
         </div>
@@ -139,7 +274,7 @@
   </section>
 
   <!-- Timeline Section -->
-  <section class="py-20 bg-white">
+  <section class="py-20 bg-gradient-to-b from-blue-50 to-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16">
@@ -148,7 +283,7 @@
             <span class="text-sm font-semibold text-blue-900">Timeline</span>
           </div>
           <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Journey</h2>
-          <p class="text-xl text-gray-600">Milestones that shaped our success</p>
+          <p class="text-xl text-gray-600">Key milestones in our journey of innovation and growth</p>
         </div>
 
         <div class="relative">
@@ -161,8 +296,10 @@
               <div class="flex flex-col lg:flex-row items-center" [class.lg:flex-row-reverse]="i % 2 === 1">
                 <!-- Content -->
                 <div class="w-full lg:w-5/12" [class.lg:text-right]="i % 2 === 0">
-                  <div class="bg-white border-2 border-blue-100 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-blue-300 transition-all duration-300">
-                    <span class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-900 to-blue-800 text-white px-4 py-1.5 rounded-full text-sm font-bold mb-3">
+                  <div
+                    class="bg-white border-2 border-blue-100 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-blue-300 transition-all duration-300">
+                    <span
+                      class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-900 to-blue-800 text-white px-4 py-1.5 rounded-full text-sm font-bold mb-3">
                       <lucide-icon name="calendar-check" [size]="14"></lucide-icon>
                       {{ milestone.year }}
                     </span>
@@ -174,7 +311,8 @@
                 <!-- Timeline dot -->
                 <div class="hidden lg:flex w-2/12 justify-center">
                   <div class="relative">
-                    <div class="w-8 h-8 bg-blue-900 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                    <div
+                      class="w-8 h-8 bg-blue-900 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
                       <div class="w-3 h-3 bg-white rounded-full"></div>
                     </div>
                   </div>
@@ -192,31 +330,33 @@
   </section>
 
   <!-- Leadership Team Section -->
-  <section class="py-20 bg-gradient-to-b from-blue-50 to-white">
+  <section class="py-20 bg-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16">
           <div class="inline-flex items-center gap-2 bg-blue-900/5 rounded-full px-4 py-2 mb-4">
             <lucide-icon name="users" [size]="18" class="text-blue-900"></lucide-icon>
-            <span class="text-sm font-semibold text-blue-900">Leadership</span>
+            <span class="text-sm font-semibold text-blue-900">Our Team</span>
           </div>
-          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Leadership Team</h2>
-          <p class="text-xl text-gray-600">Meet the visionaries behind MediPrime Biotech</p>
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Expert Teams</h2>
+          <p class="text-xl text-gray-600">Dedicated professionals driving healthcare innovation</p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           @for (member of team; track member.name) {
-          <div class="group">
-            <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-blue-100 hover:border-blue-300">
-              <div class="relative overflow-hidden bg-gradient-to-br from-blue-900 to-blue-800 h-64 flex items-center justify-center">
+          <div class="group h-full">
+            <div
+              class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-blue-100 hover:border-blue-300 h-full flex flex-col">
+              <div
+                class="relative overflow-hidden bg-gradient-to-br from-blue-900 to-blue-800 h-64 flex items-center justify-center">
                 <div class="w-32 h-32 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center">
-                  <span class="text-white text-5xl font-bold">{{ member.name.charAt(0) }}</span>
+                  <lucide-icon [name]="member.icon" [size]="64" class="text-white"></lucide-icon>
                 </div>
               </div>
-              <div class="p-6">
+              <div class="p-6 flex-grow flex flex-col">
                 <h3 class="text-xl font-bold text-gray-900 mb-1">{{ member.name }}</h3>
                 <p class="text-blue-900 font-semibold mb-3 text-sm">{{ member.position }}</p>
-                <p class="text-gray-600 text-sm leading-relaxed">{{ member.description }}</p>
+                <p class="text-gray-600 text-sm leading-relaxed flex-grow">{{ member.description }}</p>
               </div>
             </div>
           </div>
@@ -229,22 +369,29 @@
   <!-- Call to Action Section -->
   <section class="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white relative overflow-hidden">
     <div class="absolute inset-0 opacity-10">
-      <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 1px); background-size: 40px 40px;"></div>
+      <div class="absolute inset-0"
+        style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 1px); background-size: 40px 40px;">
+      </div>
     </div>
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="max-w-4xl mx-auto text-center">
         <lucide-icon name="rocket" [size]="48" class="text-white mx-auto mb-6"></lucide-icon>
-        <h2 class="text-4xl md:text-5xl font-bold mb-6">Join Us in Our Mission</h2>
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Partner With Us in Healthcare Innovation</h2>
         <p class="text-xl text-blue-100 mb-8 leading-relaxed">
-          Whether you're a healthcare professional, researcher, or partner organization, we invite you to be part of our journey in transforming healthcare for the better.
+          Whether you're a healthcare professional, academic institution, distribution partner, or research
+          collaborator, we invite you to join us in our mission to deliver evidence-based healthcare solutions that
+          improve lives.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <button routerLink="/contact" class="group px-8 py-4 bg-white text-blue-900 rounded-xl font-semibold hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-xl flex items-center justify-center gap-2">
+          <button routerLink="/contact"
+            class="group px-8 py-4 bg-white text-blue-900 rounded-xl font-semibold hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-xl flex items-center justify-center gap-2">
             <lucide-icon name="mail" [size]="20"></lucide-icon>
             <span>Get in Touch</span>
-            <lucide-icon name="arrow-right" [size]="20" class="group-hover:translate-x-1 transition-transform"></lucide-icon>
+            <lucide-icon name="arrow-right" [size]="20"
+              class="group-hover:translate-x-1 transition-transform"></lucide-icon>
           </button>
-          <button routerLink="/products" class="group px-8 py-4 bg-transparent border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-blue-900 transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+          <button routerLink="/products"
+            class="group px-8 py-4 bg-transparent border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-blue-900 transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
             <lucide-icon name="package" [size]="20"></lucide-icon>
             <span>Explore Products</span>
           </button>

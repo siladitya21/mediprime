@@ -6,7 +6,7 @@ import { LucideAngularModule } from 'lucide-angular';
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, RouterModule,LucideAngularModule],
+  imports: [CommonModule, RouterModule, LucideAngularModule],
   templateUrl: './hero.html',
   styleUrl: './hero.css',
 })
