@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 
 interface Product {
@@ -29,24 +28,18 @@ interface Product {
 }
 
 @Component({
-  selector: 'app-products-page',
+  selector: 'app-product-details',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, LucideAngularModule],
-  templateUrl: './products-page.html',
-  styleUrl: './products-page.css',
+  imports: [LucideAngularModule, CommonModule, RouterModule],
+  templateUrl: './product-details.html',
+  styleUrl: './product-details.css',
 })
-export class ProductsPage {
-  selectedCategory: string = 'all';
-  searchQuery: string = '';
+export class ProductDetails implements OnInit {
+  product: Product | null = null;
+  selectedImageIndex: number = 0;
+  showImageModal: boolean = false;
 
-  categories = [
-    { id: 'all', name: 'All Products', iconName: 'package' },
-    { id: 'probiotics', name: 'Probiotics', iconName: 'leaf' },
-    { id: 'antibiotics', name: 'Antibiotics', iconName: 'shield-plus' },
-    { id: 'vitamins', name: 'Vitamins & Minerals', iconName: 'pill' },
-    { id: 'appetite', name: 'Appetite Stimulant', iconName: 'utensils' }
-  ];
-
+  // Product data matching the exact information provided
   products: Product[] = [
     {
       id: 1,
@@ -54,45 +47,47 @@ export class ProductsPage {
       composition: 'Cyproheptadine + B Vitamins + Niacinamide + D-Panthenol',
       category: 'appetite',
       description: 'Boost Appetite & Energize Your Day — Your Wellness Ally!',
-      detailedDescription: 'Get the power of appetite stimulation and essential nutrients in one! Cyproheptadine stimulates appetite & supports healthy weight gain — ideal for picky eaters or those needing a boost. Vitamin B Complex fuels energy, metabolism, and overall vitality. Niacinamide (Vitamin B3) strengthens skin, nerves, and digestive health. D-Panthenol (Provitamin B5) nourishes skin & hair for a healthy glow.',
+      detailedDescription:
+        'Get the power of appetite stimulation and essential nutrients in one! Cyproheptadine stimulates appetite & supports healthy weight gain — ideal for picky eaters or those needing a boost. Vitamin B Complex fuels energy, metabolism, and overall vitality. Niacinamide (Vitamin B3) strengthens skin, nerves, and digestive health. D-Panthenol (Provitamin B5) nourishes skin & hair for a healthy glow.',
       formulation: 'Syrup',
       packaging: 'Bottle',
       features: [
         'Cyproheptadine: Stimulates appetite & supports healthy weight gain',
         'Vitamin B Complex: Fuels energy, metabolism, and overall vitality',
         'Niacinamide (Vitamin B3): Strengthens skin, nerves, and digestive health',
-        'D-Panthenol (Provitamin B5): Nourishes skin & hair for a healthy glow'
+        'D-Panthenol (Provitamin B5): Nourishes skin & hair for a healthy glow',
       ],
       benefits: [
         'Enhances appetite and supports weight gain',
         'Boosts energy and fights fatigue',
-        'Supports skin, hair, and nerve health'
+        'Supports skin, hair, and nerve health',
       ],
       keyHighlights: [
         'Stimulates appetite & supports weight gain',
         'Boosts energy & metabolism',
         'Strengthens skin, nerves, and digestion',
         'Nourishes hair & skin',
-        'Consult a doctor before use'
+        'Consult a doctor before use',
       ],
       inStock: true,
       icon: 'droplet',
       images: [
-        'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800',
-        'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800',
-        'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=800'
+        'assets/images/medicines/Medicyp Syrup/2a.jpeg',
+        'assets/images/medicines/Medicyp Syrup/2b.jpeg',
       ],
       dosage: 'For adults and kids. Consult a healthcare professional for proper dosage.',
       note: 'Consult a doctor before use. Available as syrup.',
-      storage: 'Store in a cool, dry place away from direct sunlight.'
+      storage: 'Store in a cool, dry place away from direct sunlight.',
     },
     {
       id: 2,
       name: 'P-Cillin LB 625',
       composition: 'Amoxicillin + Clavulanic Acid + Lactic Acid Bacillus',
       category: 'antibiotics',
-      description: 'Fight Infections & Restore Gut Health — Powerful Protection, Balanced Recovery!',
-      detailedDescription: 'Triple-action support for bacterial infections and gut wellness. Amoxicillin + Clavulanic Acid: Broad-spectrum antibiotic duo that kills harmful bacteria and overcomes antibiotic resistance, tackling respiratory, urinary, skin, and other bacterial infections effectively. Lactic Acid Bacillus (Probiotic): Restores gut flora, supports digestion, and boosts immunity — reduces antibiotic-associated diarrhea and promotes gut health.',
+      description:
+        'Fight Infections & Restore Gut Health — Powerful Protection, Balanced Recovery!',
+      detailedDescription:
+        'Triple-action support for bacterial infections and gut wellness. Amoxicillin + Clavulanic Acid: Broad-spectrum antibiotic duo that kills harmful bacteria and overcomes antibiotic resistance, tackling respiratory, urinary, skin, and other bacterial infections effectively. Lactic Acid Bacillus (Probiotic): Restores gut flora, supports digestion, and boosts immunity — reduces antibiotic-associated diarrhea and promotes gut health.',
       formulation: 'Tablet',
       packaging: 'Strip Pack',
       features: [
@@ -100,44 +95,45 @@ export class ProductsPage {
         'Kills harmful bacteria and overcomes antibiotic resistance',
         'Lactic Acid Bacillus (Probiotic): Restores gut flora',
         'Reduces antibiotic-associated diarrhea',
-        'Supports digestion and boosts immunity'
+        'Supports digestion and boosts immunity',
       ],
       benefits: [
         'Fights broad-range bacterial infections with enhanced efficacy',
         'Protects gut health with probiotics, minimizing antibiotic side effects',
-        'Supports faster recovery and strengthens immune defense'
+        'Supports faster recovery and strengthens immune defense',
       ],
       keyHighlights: [
         'Broad-spectrum antibiotic action against bacterial infections',
         'Probiotics restore gut flora & support digestion',
         'Reduces risk of antibiotic-associated gut imbalance',
         'Supports immune system & faster recovery',
-        'Consult a healthcare pro for dosage'
+        'Consult a healthcare pro for dosage',
       ],
       idealFor: [
         'Respiratory infections',
         'Urinary infections',
         'Skin infections',
-        'Other bacterial infections with gut-friendly protection'
+        'Other bacterial infections with gut-friendly protection',
       ],
       inStock: true,
       icon: 'shield-plus',
       images: [
-        'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800',
-        'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800',
-        'https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800'
+        'assets/images/medicines/P-Cillin LB 625/5a.jpeg',
+        'assets/images/medicines/P-Cillin LB 625/5b.jpeg',
       ],
       note: 'Consult a doctor before use. Available as tablets.',
       dosage: 'Consult a healthcare professional for proper dosage.',
-      storage: 'Store below 25°C in a dry place.'
+      storage: 'Store below 25°C in a dry place.',
     },
     {
       id: 3,
       name: 'P-Cillin Dry Syrup',
       composition: 'Amoxicillin 228.5mg/5ml',
       category: 'antibiotics',
-      description: 'Sweet Relief for Little Ones — Powerful Pediatric Antibiotic for Bacterial Infections!',
-      detailedDescription: 'Easy-to-give, delicious-tasting Amoxicillin Dry Syrup 228.5mg — trusted to fight bacterial infections in kids! Amoxicillin (228.5mg/5ml): Broad-spectrum antibiotic effectively treats ear, throat, lung, skin, and urinary tract infections in children. Pediatric-friendly formula: Reconstituted syrup with a sweet flavor, perfect for kids (infants & children). Targets common childhood infections: Pneumonia, tonsillitis, ear infections, sinusitis, and more — relieves symptoms fast.',
+      description:
+        'Sweet Relief for Little Ones — Powerful Pediatric Antibiotic for Bacterial Infections!',
+      detailedDescription:
+        'Easy-to-give, delicious-tasting Amoxicillin Dry Syrup 228.5mg — trusted to fight bacterial infections in kids! Amoxicillin (228.5mg/5ml): Broad-spectrum antibiotic effectively treats ear, throat, lung, skin, and urinary tract infections in children. Pediatric-friendly formula: Reconstituted syrup with a sweet flavor, perfect for kids (infants & children). Targets common childhood infections: Pneumonia, tonsillitis, ear infections, sinusitis, and more — relieves symptoms fast.',
       formulation: 'Dry Syrup',
       packaging: '228.5mg/5ml Bottle',
       features: [
@@ -145,17 +141,17 @@ export class ProductsPage {
         'Treats ear, throat, lung, skin, and urinary tract infections',
         'Easy-to-mix, sweet-flavored syrup',
         'Targets common childhood infections effectively',
-        'Relieves symptoms fast'
+        'Relieves symptoms fast',
       ],
       benefits: [
         'Effective against a wide range of bacterial infections',
         'Easy-to-mix, pleasant-tasting dry syrup for fuss-free dosing',
-        'Supports quick recovery and eases symptoms in kids'
+        'Supports quick recovery and eases symptoms in kids',
       ],
       keyHighlights: [
         'Treats ear, throat, lung, skin, and urinary infections in kids',
         'Broad-spectrum antibiotic for pediatric use',
-        'Easy-to-mix, sweet-flavored syrup for fuss-free dosing'
+        'Easy-to-mix, sweet-flavored syrup for fuss-free dosing',
       ],
       indications: [
         'Pneumonia',
@@ -163,18 +159,17 @@ export class ProductsPage {
         'Ear infections',
         'Sinusitis',
         'Skin infections',
-        'Urinary tract infections'
+        'Urinary tract infections',
       ],
       inStock: true,
       icon: 'baby',
       images: [
-        'https://images.unsplash.com/photo-1628771065518-0d82f1938462?w=800',
-        'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800',
-        'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=800'
+        'assets/images/medicines/P-Cillin Dry Syrup/3a.jpeg',
+        'assets/images/medicines/P-Cillin Dry Syrup/3b.jpeg',
       ],
       dosage: 'For pediatric bacterial infections — consult a pediatrician for dosage.',
       storage: 'Store in a cool, dry place; use within 7 days of reconstitution.',
-      note: 'Consult a doctor before giving; not for self-medication.'
+      note: 'Consult a doctor before giving; not for self-medication.',
     },
     {
       id: 4,
@@ -182,7 +177,8 @@ export class ProductsPage {
       composition: 'Amoxicillin 457mg',
       category: 'antibiotics',
       description: 'Powerful Amoxicillin 457mg — Effective Relief for Bacterial Infections',
-      detailedDescription: 'Amoxicillin 457mg: A trusted antibiotic for treating a wide range of bacterial infections. Amoxicillin (457mg): A broad-spectrum penicillin antibiotic that targets and eliminates bacteria causing respiratory, ear, throat, skin, urinary tract, and other infections. High-Dose Strength: 457mg dosage ensures potent action against stubborn bacterial infections. Fast & Effective Relief: Reduces symptoms quickly and promotes faster recovery.',
+      detailedDescription:
+        'Amoxicillin 457mg: A trusted antibiotic for treating a wide range of bacterial infections. Amoxicillin (457mg): A broad-spectrum penicillin antibiotic that targets and eliminates bacteria causing respiratory, ear, throat, skin, urinary tract, and other infections. High-Dose Strength: 457mg dosage ensures potent action against stubborn bacterial infections. Fast & Effective Relief: Reduces symptoms quickly and promotes faster recovery.',
       formulation: 'Suspension',
       packaging: 'Bottle',
       features: [
@@ -190,30 +186,27 @@ export class ProductsPage {
         'High-Dose Strength: 457mg for potent action',
         'Targets respiratory, ear, throat, skin, and urinary tract infections',
         'Fast & Effective Relief',
-        'Promotes faster recovery'
+        'Promotes faster recovery',
       ],
       benefits: [
         'Treats a broad range of bacterial infections (respiratory, urinary, skin, etc.)',
         'Potent 457mg dose for effective bacterial elimination',
-        'Supports rapid recovery and symptom relief'
+        'Supports rapid recovery and symptom relief',
       ],
       keyHighlights: [
         'Broad-spectrum antibiotic targeting multiple bacterial infections',
         '457mg strength for potent action',
         'Treats respiratory, ear, throat, skin, and urinary tract infections',
         'Take as prescribed; complete the course',
-        'Consult a doctor before use; check for penicillin allergy'
+        'Consult a doctor before use; check for penicillin allergy',
       ],
       inStock: true,
       icon: 'pill-bottle',
-      images: [
-        'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800',
-        'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=800',
-        'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800'
-      ],
-      dosage: 'For the treatment of bacterial infections in adults and children. Consult a doctor for dosage.',
+      images: ['assets/images/medicines/P-Cillin Forte/4.jpeg'],
+      dosage:
+        'For the treatment of bacterial infections in adults and children. Consult a doctor for dosage.',
       storage: 'Store in a cool, dry place.',
-      note: 'Consult a doctor before use; check for penicillin allergy.'
+      note: 'Consult a doctor before use; check for penicillin allergy.',
     },
     {
       id: 5,
@@ -221,7 +214,8 @@ export class ProductsPage {
       composition: 'Pre-Probiotic + Zinc (Saccharomyces Boulardii + Lactobacillus GG)',
       category: 'probiotics',
       description: 'Gut Health & Immunity Boost — Triple-Action Gut Harmony',
-      detailedDescription: 'Rebalance your gut & strengthen your immunity with our Pre-Probiotic Sachet + Zinc — a synergistic blend of good bacteria, yeast, and essential minerals. Saccharomyces Boulardii (Probiotic Yeast): Supports gut health, restores microbial balance, and reduces antibiotic-associated diarrhea. Lactobacillus Rhamnosus GG (Probiotic Bacteria): Boosts gut flora, strengthens digestion, and enhances immune response. Prebiotic Fibers: Nourish beneficial gut microbes, promoting a healthy gut environment. Zinc: Supports immune function, wound healing, and overall gut integrity.',
+      detailedDescription:
+        'Rebalance your gut & strengthen your immunity with our Pre-Probiotic Sachet + Zinc — a synergistic blend of good bacteria, yeast, and essential minerals. Saccharomyces Boulardii (Probiotic Yeast): Supports gut health, restores microbial balance, and reduces antibiotic-associated diarrhea. Lactobacillus Rhamnosus GG (Probiotic Bacteria): Boosts gut flora, strengthens digestion, and enhances immune response. Prebiotic Fibers: Nourish beneficial gut microbes, promoting a healthy gut environment. Zinc: Supports immune function, wound healing, and overall gut integrity.',
       formulation: 'Sachet',
       packaging: 'Box of Sachets',
       features: [
@@ -229,34 +223,34 @@ export class ProductsPage {
         'Lactobacillus Rhamnosus GG: Boosts gut flora and strengthens digestion',
         'Prebiotic Fibers: Nourish beneficial gut microbes',
         'Zinc: Supports immune function and gut integrity',
-        'Reduces antibiotic-associated diarrhea'
+        'Reduces antibiotic-associated diarrhea',
       ],
       benefits: [
         'Restores Gut Balance: Probiotics replenish & harmonize gut microflora',
-        'Strengthens Immunity: Zinc + Probiotics boost your body\'s defense',
-        'Supports Digestive Wellness: Eases digestion, reduces bloating, and promotes gut comfort'
+        "Strengthens Immunity: Zinc + Probiotics boost your body's defense",
+        'Supports Digestive Wellness: Eases digestion, reduces bloating, and promotes gut comfort',
       ],
       keyHighlights: [
         'Probiotic yeast (S. Boulardii) + bacteria (L. Rhamnosus GG) for gut harmony',
         'Prebiotics nourish good bacteria; Zinc supports immunity',
         'Eases digestion, reduces bloating, and strengthens gut barrier',
-        'Suitable for post-antibiotic recovery, stress, or travel'
+        'Suitable for post-antibiotic recovery, stress, or travel',
       ],
       idealFor: [
         'Recovery after antibiotics or illness',
         'Supporting gut health and digestion',
         'Boosting immunity, especially during stress or travel',
-        'Maintaining a balanced microbiome'
+        'Maintaining a balanced microbiome',
       ],
       inStock: true,
       icon: 'leaf',
       images: [
-        'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800',
-        'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800',
-        'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800'
+        'assets/images/medicines/Primolac Sachet/7a.jpeg',
+        'assets/images/medicines/Primolac Sachet/7b.jpeg',
+        'assets/images/medicines/Primolac Sachet/7c.jpeg',
       ],
       dosage: 'Consult a healthcare professional for proper dosage.',
-      storage: 'Store in a cool, dry place.'
+      storage: 'Store in a cool, dry place.',
     },
     {
       id: 6,
@@ -264,7 +258,8 @@ export class ProductsPage {
       composition: 'Pre-Probiotic + L-Glutamine',
       category: 'probiotics',
       description: 'Gut Repair & Immunity Boost — Dual-Action Gut Health Support',
-      detailedDescription: 'Rebuild your gut & strengthen your defense with our Pre-Probiotic Capsules + L-Glutamine Capsules — a powerful duo for gut health and immunity. Pre-Probiotic Capsules: Packed with beneficial probiotics (Lactobacillus & Bifidobacterium) + prebiotic fibers, they restore gut flora, support digestion, and boost gut immunity. L-Glutamine Capsules: This amino acid heals and protects the gut lining, reduces inflammation, and promotes gut repair — essential for leaky gut, stress, or digestive discomfort.',
+      detailedDescription:
+        'Rebuild your gut & strengthen your defense with our Pre-Probiotic Capsules + L-Glutamine Capsules — a powerful duo for gut health and immunity. Pre-Probiotic Capsules: Packed with beneficial probiotics (Lactobacillus & Bifidobacterium) + prebiotic fibers, they restore gut flora, support digestion, and boost gut immunity. L-Glutamine Capsules: This amino acid heals and protects the gut lining, reduces inflammation, and promotes gut repair — essential for leaky gut, stress, or digestive discomfort.',
       formulation: 'Capsule',
       packaging: 'Blister Pack',
       features: [
@@ -272,34 +267,35 @@ export class ProductsPage {
         'Prebiotic fibers restore gut flora',
         'L-Glutamine heals and protects the gut lining',
         'Reduces inflammation and promotes gut repair',
-        'Essential for leaky gut and digestive discomfort'
+        'Essential for leaky gut and digestive discomfort',
       ],
       benefits: [
         'Repairs & Protects Gut Lining: L-Glutamine soothes and rebuilds the gut barrier, easing IBS and leaky gut symptoms',
         'Balances Gut Microbiome: Prebiotics + Probiotics nourish & replenish good bacteria for a healthy gut ecosystem',
         'Boosts Immunity & Digestion: Strengthens gut-brain axis and enhances nutrient absorption',
-        'Supports Post-Antibiotic Recovery & Stress Resilience: Replenishes gut health and calms digestive issues'
+        'Supports Post-Antibiotic Recovery & Stress Resilience: Replenishes gut health and calms digestive issues',
       ],
       keyHighlights: [
         'Probiotics + prebiotics restore gut flora & support digestion',
         'L-Glutamine repairs and protects the gut lining (ideal for leaky gut/IBS)',
         'Boosts immunity and gut-brain communication',
-        'Eases post-antibiotic gut imbalance and stress-related digestive issues'
+        'Eases post-antibiotic gut imbalance and stress-related digestive issues',
       ],
       idealFor: [
         'Gut repair and digestive comfort (IBS, leaky gut, or post-antibiotic recovery)',
         'Immunity boost and stress management',
-        'Supporting overall gut-brain health'
+        'Supporting overall gut-brain health',
       ],
       inStock: true,
       icon: 'pill',
       images: [
-        'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=800',
-        'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800',
-        'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800'
+        'assets/images/medicines/Primolac Capsule/6a.jpeg',
+        'assets/images/medicines/Primolac Capsule/6b.jpeg',
+        'assets/images/medicines/Primolac Capsule/6c.jpeg',
+        'assets/images/medicines/Primolac Capsule/6d.jpeg',
       ],
       dosage: 'Consult a healthcare professional for proper dosage.',
-      storage: 'Store in a cool, dry place.'
+      storage: 'Store in a cool, dry place.',
     },
     {
       id: 7,
@@ -307,7 +303,8 @@ export class ProductsPage {
       composition: 'Omega-3 + Ginseng + L-Carnitine + Multivitamin',
       category: 'vitamins',
       description: 'Boost Energy, Focus & Vitality — Ultimate Daily Wellness Pack',
-      detailedDescription: 'Power up your day with a blend of brain, energy, and immune support — Omega-3 Fatty Acids, Ginseng, L-Carnitine, and Multivitamins in one powerful supplement. Omega-3 Fatty Acids (EPA & DHA): Supports heart and brain health, promotes cognitive function, and reduces inflammation. Ginseng (Panax Ginseng): Boosts mental clarity, energy, and stress resilience; enhances physical and mental performance. L-Carnitine: Converts fat into energy, supports metabolism, and improves endurance and focus. Multivitamin (B-Vitamins, Vitamins C, D, E, A, K, and Minerals): Fills nutritional gaps, supports immune function, energy production, and overall vitality.',
+      detailedDescription:
+        'Power up your day with a blend of brain, energy, and immune support — Omega-3 Fatty Acids, Ginseng, L-Carnitine, and Multivitamins in one powerful supplement. Omega-3 Fatty Acids (EPA & DHA): Supports heart and brain health, promotes cognitive function, and reduces inflammation. Ginseng (Panax Ginseng): Boosts mental clarity, energy, and stress resilience; enhances physical and mental performance. L-Carnitine: Converts fat into energy, supports metabolism, and improves endurance and focus. Multivitamin (B-Vitamins, Vitamins C, D, E, A, K, and Minerals): Fills nutritional gaps, supports immune function, energy production, and overall vitality.',
       formulation: 'Softgel Capsule',
       packaging: 'Strip Pack',
       features: [
@@ -315,72 +312,114 @@ export class ProductsPage {
         'Ginseng (Panax Ginseng): Boosts mental clarity and energy',
         'L-Carnitine: Converts fat into energy and supports metabolism',
         'Multivitamins: B-Vitamins, Vitamins C, D, E, A, K, and Minerals',
-        'Comprehensive daily wellness support'
+        'Comprehensive daily wellness support',
       ],
       benefits: [
         'Enhances Mental & Physical Energy: Ginseng + L-Carnitine + B-Vitamins work together to boost stamina and focus',
         'Supports Heart & Cognitive Health: Omega-3s promote brain function and cardiovascular wellness',
         'Strengthens Immunity & Vitality: Multivitamins + Ginseng ensure your body gets essential nutrients for daily resilience',
         'Improves Metabolism & Fat Burn: L-Carnitine + Omega-3s support healthy weight management and energy production',
-        'Fills Nutritional Gaps: Multivitamins cover your daily essential nutrient needs'
+        'Fills Nutritional Gaps: Multivitamins cover your daily essential nutrient needs',
       ],
       keyHighlights: [
         'Omega-3s (EPA & DHA): Brain, heart, and anti-inflammatory support',
         'Ginseng: Enhances energy, focus, and stress resilience',
         'L-Carnitine: Converts fat to energy; boosts metabolism and endurance',
         'Multivitamins: Fills nutrient gaps; supports immunity and vitality',
-        'Consult a healthcare pro before use'
+        'Consult a healthcare pro before use',
       ],
       idealFor: [
         'Busy professionals needing mental and physical stamina',
         'Students and athletes looking for focus and endurance',
         'Anyone seeking overall wellness and immune support',
-        'Vegetarians/vegans or those with nutrient deficiencies'
+        'Vegetarians/vegans or those with nutrient deficiencies',
       ],
       inStock: true,
       icon: 'tablets',
       images: [
-        'https://images.unsplash.com/photo-1550572017-edd951aa8f72?w=800',
-        'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=800',
-        'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800'
+        'assets/images/medicines/Medfly 9G/1a.jpeg',
+        'assets/images/medicines/Medfly 9G/1b.jpeg',
+        'assets/images/medicines/Medfly 9G/1c.jpeg',
       ],
       dosage: 'Consult a healthcare professional for proper dosage.',
-      storage: 'Store in a cool, dry place.'
-    }
+      storage: 'Store in a cool, dry place.',
+    },
   ];
 
-  get filteredProducts(): Product[] {
-    let filtered = this.products;
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
-    if (this.selectedCategory !== 'all') {
-      filtered = filtered.filter(p => p.category === this.selectedCategory);
+  ngOnInit() {
+    this.route.params.subscribe((params) => {
+      const productId = +params['id'];
+      this.product = this.products.find((p) => p.id === productId) || null;
+
+      if (!this.product) {
+        this.router.navigate(['/products']);
+      }
+    });
+  }
+
+  selectImage(index: number) {
+    this.selectedImageIndex = index;
+  }
+
+  openImageModal() {
+    this.showImageModal = true;
+  }
+
+  closeImageModal() {
+    this.showImageModal = false;
+  }
+
+  nextImage() {
+    if (this.product && this.selectedImageIndex < this.product.images.length - 1) {
+      this.selectedImageIndex++;
     }
+  }
 
-    if (this.searchQuery.trim()) {
-      const query = this.searchQuery.toLowerCase();
-      filtered = filtered.filter(p =>
-        p.name.toLowerCase().includes(query) ||
-        p.composition.toLowerCase().includes(query) ||
-        p.description.toLowerCase().includes(query) ||
-        p.category.toLowerCase().includes(query) ||
-        p.features.some(f => f.toLowerCase().includes(query))
-      );
+  previousImage() {
+    if (this.selectedImageIndex > 0) {
+      this.selectedImageIndex--;
     }
-
-    return filtered;
   }
 
-  selectCategory(categoryId: string) {
-    this.selectedCategory = categoryId;
+  // Check if image exists
+  imageExists(src: string): boolean {
+    // This is a simple check - in production you might want to use a more robust solution
+    return src.startsWith('assets/');
   }
 
-  clearFilters() {
-    this.selectedCategory = 'all';
-    this.searchQuery = '';
+  // Handle image error
+  onImageError(event: any) {
+    event.target.style.display = 'none';
+    const placeholder = event.target.nextElementSibling;
+    if (placeholder) {
+      placeholder.style.display = 'flex';
+    }
   }
 
-  getCategoryName(categoryId: string): string {
-    const category = this.categories.find(cat => cat.id === categoryId);
-    return category ? category.name : '';
+  getCategoryBadgeColor(): string {
+    switch (this.product?.category) {
+      case 'probiotics':
+        return 'bg-green-500';
+      case 'antibiotics':
+        return 'bg-blue-500';
+      case 'vitamins':
+        return 'bg-purple-500';
+      case 'appetite':
+        return 'bg-orange-500';
+      default:
+        return 'bg-gray-500';
+    }
+  }
+
+  getCategoryName(): string {
+    const categories: { [key: string]: string } = {
+      probiotics: 'Probiotics',
+      antibiotics: 'Antibiotics',
+      vitamins: 'Vitamins & Minerals',
+      appetite: 'Appetite Stimulant',
+    };
+    return this.product ? categories[this.product.category] || '' : '';
   }
 }

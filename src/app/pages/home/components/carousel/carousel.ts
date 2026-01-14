@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LucideAngularModule } from "lucide-angular";
 
@@ -37,6 +37,20 @@ export class Carousel {
       description: 'Delivering life-saving medicines to patients worldwide'
     }
   ];
+
+  // Disable right-click context menu
+  @HostListener('contextmenu', ['$event'])
+  onRightClick(event: MouseEvent): boolean {
+    event.preventDefault();
+    return false;
+  }
+
+  // Prevent image dragging
+  @HostListener('dragstart', ['$event'])
+  onDragStart(event: DragEvent): boolean {
+    event.preventDefault();
+    return false;
+  }
 
   nextSlide(): void {
     this.currentSlide = (this.currentSlide + 1) % this.slides.length;

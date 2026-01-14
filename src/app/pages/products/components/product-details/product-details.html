@@ -1,0 +1,401 @@
+<div class="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+  @if (product) {
+  <!-- Breadcrumb -->
+  <div class="bg-white border-b border-gray-200">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="flex items-center gap-2 text-sm">
+        <a routerLink="/" class="text-gray-600 hover:text-blue-900 transition-colors">Home</a>
+        <lucide-icon name="chevron-right" [size]="16" class="text-gray-400"></lucide-icon>
+        <a routerLink="/products" class="text-gray-600 hover:text-blue-900 transition-colors">Products</a>
+        <lucide-icon name="chevron-right" [size]="16" class="text-gray-400"></lucide-icon>
+        <span class="text-blue-900 font-semibold">{{ product.name }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Detail Section -->
+  <section class="py-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <!-- Back Button -->
+        <button
+          routerLink="/products"
+          class="inline-flex items-center gap-2 text-blue-900 hover:text-blue-950 mb-8 font-semibold transition-colors group"
+        >
+          <lucide-icon name="arrow-left" [size]="20" class="group-hover:-translate-x-1 transition-transform"></lucide-icon>
+          Back to Products
+        </button>
+
+        <div class="grid lg:grid-cols-2 gap-12">
+          <!-- Image Gallery -->
+          <div class="space-y-4">
+            <!-- Main Image -->
+            <div class="relative bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-blue-100 group cursor-pointer" (click)="openImageModal()">
+              <div class="aspect-square">
+                <img
+                  [src]="product.images[selectedImageIndex]"
+                  [alt]="product.name"
+                  (error)="onImageError($event)"
+                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <!-- Placeholder if image not found -->
+                <div class="hidden w-full h-full bg-gradient-to-br from-blue-900 to-blue-800 items-center justify-center">
+                  <div class="text-center">
+                    <lucide-icon [name]="product.icon" [size]="120" class="text-white mx-auto mb-4"></lucide-icon>
+                    <p class="text-white text-lg font-semibold">{{ product.name }}</p>
+                    <p class="text-blue-100 text-sm mt-2">{{ product.formulation }}</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Stock Badge -->
+              <div
+                class="absolute top-4 right-4 flex items-center gap-1 px-4 py-2 rounded-full text-sm font-semibold shadow-lg"
+                [class.bg-green-500]="product.inStock"
+                [class.bg-red-500]="!product.inStock"
+                [class.text-white]="true"
+              >
+                <lucide-icon [name]="product.inStock ? 'circle-check' : 'circle-x'" [size]="16"></lucide-icon>
+                {{ product.inStock ? 'In Stock' : 'Out of Stock' }}
+              </div>
+              <!-- Zoom Hint -->
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center pointer-events-none">
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg flex items-center gap-2">
+                  <lucide-icon name="zoom-in" [size]="20" class="text-blue-900"></lucide-icon>
+                  <span class="text-sm font-semibold text-blue-900">Click to enlarge</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Thumbnail Gallery -->
+            <div class="grid grid-cols-3 gap-4">
+              @for (image of product.images; track $index) {
+              <div
+                (click)="selectImage($index)"
+                [class.ring-4]="selectedImageIndex === $index"
+                [class.ring-blue-900]="selectedImageIndex === $index"
+                [class.ring-blue-100]="selectedImageIndex !== $index"
+                class="relative aspect-square bg-white rounded-xl shadow-md overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl border-2 border-blue-100"
+              >
+                <img
+                  [src]="image"
+                  [alt]="product.name + ' - Image ' + ($index + 1)"
+                  (error)="onImageError($event)"
+                  class="w-full h-full object-cover"
+                />
+                <!-- Placeholder for thumbnails -->
+                <div class="hidden w-full h-full bg-gradient-to-br from-blue-900 to-blue-800 items-center justify-center">
+                  <lucide-icon [name]="product.icon" [size]="40" class="text-white"></lucide-icon>
+                </div>
+              </div>
+              }
+            </div>
+          </div>
+
+          <!-- Product Information -->
+          <div class="space-y-6">
+            <!-- Category Badge -->
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-white text-sm font-semibold" [ngClass]="getCategoryBadgeColor()">
+                <lucide-icon name="tag" [size]="14"></lucide-icon>
+                {{ getCategoryName() }}
+              </span>
+              <span class="inline-flex items-center gap-1 bg-blue-50 text-blue-900 px-3 py-1 rounded-full text-sm font-semibold">
+                <lucide-icon [name]="product.icon" [size]="14"></lucide-icon>
+                {{ product.formulation }}
+              </span>
+            </div>
+
+            <!-- Product Name -->
+            <div>
+              <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-3">{{ product.name }}</h1>
+              <p class="text-lg text-blue-900 font-semibold">{{ product.composition }}</p>
+            </div>
+
+            <!-- Description -->
+            <div class="bg-blue-50 rounded-xl p-6 border-2 border-blue-100">
+              <p class="text-gray-700 leading-relaxed">
+                {{ product.detailedDescription || product.description }}
+              </p>
+            </div>
+
+            <!-- Key Features -->
+            <div>
+              <div class="flex items-center gap-2 mb-4">
+                <lucide-icon name="sparkles" [size]="20" class="text-blue-900"></lucide-icon>
+                <h3 class="text-xl font-bold text-gray-900">Key Features</h3>
+              </div>
+              <div class="grid grid-cols-1 gap-3">
+                @for (feature of product.features; track feature) {
+                <div class="flex items-start gap-3 bg-white p-4 rounded-lg shadow-md border border-blue-100">
+                  <lucide-icon name="circle-check" [size]="20" class="text-green-500 flex-shrink-0 mt-0.5"></lucide-icon>
+                  <span class="text-gray-700">{{ feature }}</span>
+                </div>
+                }
+              </div>
+            </div>
+
+            <!-- Packaging Info -->
+            <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-blue-100">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-sm text-gray-600 mb-1">Packaging</p>
+                  <p class="text-xl font-bold text-blue-900">{{ product.packaging }}</p>
+                </div>
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-900 to-blue-800 rounded-xl flex items-center justify-center">
+                  <lucide-icon name="package" [size]="32" class="text-white"></lucide-icon>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact CTA -->
+            <button
+              routerLink="/contact"
+              class="w-full group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-900 to-blue-800 text-white rounded-xl font-semibold hover:from-blue-800 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+            >
+              <lucide-icon name="phone" [size]="20"></lucide-icon>
+              <span>Contact for Pricing & Orders</span>
+              <lucide-icon name="arrow-right" [size]="20" class="group-hover:translate-x-1 transition-transform"></lucide-icon>
+            </button>
+          </div>
+        </div>
+
+        <!-- Detailed Information Tabs -->
+        <div class="mt-16">
+          <div class="bg-white rounded-2xl shadow-xl border-2 border-blue-100 overflow-hidden">
+            <!-- Tabs Header -->
+            <div class="bg-gradient-to-r from-blue-900 to-blue-800 px-6 py-4">
+              <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                <lucide-icon name="file-text" [size]="24"></lucide-icon>
+                Detailed Information
+              </h2>
+            </div>
+
+            <!-- Tabs Content -->
+            <div class="p-8 space-y-8">
+              
+              <!-- Benefits -->
+              @if (product.benefits && product.benefits.length > 0) {
+              <div>
+                <div class="flex items-center gap-2 mb-4">
+                  <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <lucide-icon name="heart" [size]="20" class="text-green-600"></lucide-icon>
+                  </div>
+                  <h3 class="text-2xl font-bold text-gray-900">Benefits</h3>
+                </div>
+                <div class="grid gap-3 ml-12">
+                  @for (benefit of product.benefits; track benefit) {
+                  <div class="flex items-start gap-2 text-gray-700">
+                    <lucide-icon name="circle-check" [size]="18" class="text-green-500 flex-shrink-0 mt-0.5"></lucide-icon>
+                    <span>{{ benefit }}</span>
+                  </div>
+                  }
+                </div>
+              </div>
+              }
+
+              <!-- Key Highlights -->
+              @if (product.keyHighlights && product.keyHighlights.length > 0) {
+              <div class="bg-yellow-50 rounded-xl p-6 border-2 border-yellow-200">
+                <div class="flex items-center gap-2 mb-3">
+                  <div class="w-10 h-10 bg-yellow-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <lucide-icon name="star" [size]="20" class="text-white"></lucide-icon>
+                  </div>
+                  <h3 class="text-2xl font-bold text-gray-900">Key Highlights</h3>
+                </div>
+                <div class="grid md:grid-cols-2 gap-3 ml-12">
+                  @for (highlight of product.keyHighlights; track highlight) {
+                  <div class="flex items-center gap-2 text-gray-700">
+                    <lucide-icon name="sparkles" [size]="16" class="text-yellow-600"></lucide-icon>
+                    <span>{{ highlight }}</span>
+                  </div>
+                  }
+                </div>
+              </div>
+              }
+
+              <!-- Ideal For -->
+              @if (product.idealFor && product.idealFor.length > 0) {
+              <div>
+                <div class="flex items-center gap-2 mb-4">
+                  <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <lucide-icon name="users" [size]="20" class="text-purple-600"></lucide-icon>
+                  </div>
+                  <h3 class="text-2xl font-bold text-gray-900">Ideal For</h3>
+                </div>
+                <div class="grid md:grid-cols-2 gap-3 ml-12">
+                  @for (item of product.idealFor; track item) {
+                  <div class="flex items-center gap-2 text-gray-700">
+                    <lucide-icon name="user-check" [size]="18" class="text-purple-500"></lucide-icon>
+                    <span>{{ item }}</span>
+                  </div>
+                  }
+                </div>
+              </div>
+              }
+
+              <!-- Indications -->
+              @if (product.indications && product.indications.length > 0) {
+              <div>
+                <div class="flex items-center gap-2 mb-4">
+                  <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <lucide-icon name="stethoscope" [size]="20" class="text-blue-900"></lucide-icon>
+                  </div>
+                  <h3 class="text-2xl font-bold text-gray-900">Indications</h3>
+                </div>
+                <div class="grid md:grid-cols-2 gap-3 ml-12">
+                  @for (indication of product.indications; track indication) {
+                  <div class="flex items-center gap-2 text-gray-700">
+                    <lucide-icon name="check" [size]="18" class="text-green-500"></lucide-icon>
+                    <span>{{ indication }}</span>
+                  </div>
+                  }
+                </div>
+              </div>
+              }
+
+              <!-- Dosage -->
+              @if (product.dosage) {
+              <div class="bg-blue-50 rounded-xl p-6 border-2 border-blue-100">
+                <div class="flex items-center gap-2 mb-3">
+                  <div class="w-10 h-10 bg-blue-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <lucide-icon name="pill" [size]="20" class="text-white"></lucide-icon>
+                  </div>
+                  <h3 class="text-2xl font-bold text-gray-900">Dosage & Administration</h3>
+                </div>
+                <p class="text-gray-700 ml-12 leading-relaxed">{{ product.dosage }}</p>
+              </div>
+              }
+
+              <!-- Storage -->
+              @if (product.storage) {
+              <div class="bg-gray-50 rounded-xl p-6 border-2 border-gray-200">
+                <div class="flex items-center gap-2 mb-3">
+                  <div class="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <lucide-icon name="thermometer" [size]="20" class="text-white"></lucide-icon>
+                  </div>
+                  <h3 class="text-2xl font-bold text-gray-900">Storage Instructions</h3>
+                </div>
+                <p class="text-gray-700 ml-12 leading-relaxed">{{ product.storage }}</p>
+              </div>
+              }
+
+              <!-- Note -->
+              @if (product.note) {
+              <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-6">
+                <div class="flex items-start gap-3">
+                  <lucide-icon name="info" [size]="24" class="text-blue-600 flex-shrink-0"></lucide-icon>
+                  <div>
+                    <h4 class="font-bold text-gray-900 mb-2">Important Note</h4>
+                    <p class="text-gray-700 text-sm">{{ product.note }}</p>
+                  </div>
+                </div>
+              </div>
+              }
+
+              <!-- Important Medical Notice -->
+              <div class="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-6">
+                <div class="flex items-start gap-3">
+                  <lucide-icon name="triangle-alert" [size]="24" class="text-yellow-600 flex-shrink-0"></lucide-icon>
+                  <div>
+                    <h4 class="font-bold text-gray-900 mb-2">Medical Disclaimer</h4>
+                    <p class="text-gray-700 text-sm">
+                      This information is for reference only. Always consult with a qualified healthcare professional before starting any new medication or supplement. Do not use this product if you are allergic to any of its ingredients. Keep out of reach of children.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Modal -->
+  @if (showImageModal && product) {
+  <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 animate-fade-in" (click)="closeImageModal()">
+    <!-- Close Button -->
+    <button
+      (click)="closeImageModal()"
+      class="absolute top-4 right-4 z-10 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full text-white transition-all duration-200"
+      aria-label="Close modal"
+    >
+      <lucide-icon name="x" [size]="28"></lucide-icon>
+    </button>
+
+    <!-- Previous Button -->
+    @if (selectedImageIndex > 0) {
+    <button
+      (click)="previousImage(); $event.stopPropagation()"
+      class="absolute left-4 z-10 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full text-white transition-all duration-200"
+      aria-label="Previous image"
+    >
+      <lucide-icon name="chevron-left" [size]="32"></lucide-icon>
+    </button>
+    }
+
+    <!-- Next Button -->
+    @if (selectedImageIndex < product.images.length - 1) {
+    <button
+      (click)="nextImage(); $event.stopPropagation()"
+      class="absolute right-4 z-10 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full text-white transition-all duration-200"
+      aria-label="Next image"
+    >
+      <lucide-icon name="chevron-right" [size]="32"></lucide-icon>
+    </button>
+    }
+
+    <!-- Image Container -->
+    <div class="max-w-6xl max-h-[90vh] w-full" (click)="$event.stopPropagation()">
+      <div class="relative">
+        <img
+          [src]="product.images[selectedImageIndex]"
+          [alt]="product.name"
+          (error)="onImageError($event)"
+          class="w-full h-full max-h-[85vh] object-contain rounded-lg"
+        />
+        <!-- Modal Placeholder if image not found -->
+        <div class="hidden w-full h-96 bg-gradient-to-br from-blue-900 to-blue-800 rounded-lg items-center justify-center">
+          <div class="text-center p-8">
+            <lucide-icon [name]="product.icon" [size]="150" class="text-white mx-auto mb-4"></lucide-icon>
+            <p class="text-white text-2xl font-semibold">{{ product.name }}</p>
+            <p class="text-blue-100 text-lg mt-2">{{ product.formulation }}</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Image Counter -->
+      <div class="text-center mt-4 text-white">
+        <p class="text-sm bg-black/30 inline-block px-4 py-2 rounded-full">
+          Image {{ selectedImageIndex + 1 }} of {{ product.images.length }}
+        </p>
+      </div>
+    </div>
+  </div>
+  }
+  
+  } @else {
+  <!-- Loading State -->
+  <div class="flex items-center justify-center min-h-screen">
+    <div class="text-center">
+      <div class="w-16 h-16 border-4 border-blue-200 border-t-blue-900 rounded-full animate-spin mx-auto mb-4"></div>
+      <p class="text-gray-600">Loading product details...</p>
+    </div>
+  </div>
+  }
+</div>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.2s ease-in-out;
+  }
+</style>

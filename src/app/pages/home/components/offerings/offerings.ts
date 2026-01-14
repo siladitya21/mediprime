@@ -1,6 +1,7 @@
 import { Component, signal, inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { LucideAngularModule } from 'lucide-angular';
+import { RouterModule } from '@angular/router';
 
 interface ServiceDetail {
   id: string;
@@ -16,7 +17,7 @@ interface ServiceDetail {
 @Component({
   selector: 'app-offerings',
   standalone: true,
-  imports: [LucideAngularModule, CommonModule],
+  imports: [LucideAngularModule, CommonModule,RouterModule],
   templateUrl: './offerings.html',
   styleUrl: './offerings.css',
 })
